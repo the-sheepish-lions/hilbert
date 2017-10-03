@@ -1,0 +1,261 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Module version="122010300" xmlns="http://xmlns.oracle.com/Forms">
+   <FormModule Name="FWVAGNT" RuntimeComp="5.0" DirtyInfo="true">
+      <Coordinate CharacterCellWidth="6" RealUnit="Point" DefaultFontScaling="false" CharacterCellHeight="17" CoordinateSystem="Real"/>
+      <Block
+        Name="FWBAGNT"
+        OrderByClause="order by fwbagnt_orgn_code"
+        DMLDataName="FWBAGNT"
+        QueryDataSourceName="FWBAGNT"
+        RecordsDisplayCount="16"
+        DirtyInfo="true"
+        VisualAttributeName="DEFAULT"
+        DatabaseBlock="true"
+        QueryDataSourceType="Table"
+        DMLDataType="Table"
+        RecordOrientation="Vertical"
+        ShowScrollbar="false">
+        <Item
+          Name="FWBAGNT_ORGN_CODE"
+          Enabled="true"
+          DistanceBetweenRecords="0"
+          Width="36" MaximumLength="6"
+          CompressionQuality="None"
+          XPosition="7"
+          Required="true"
+          YPosition="41"
+          DatabaseItem="true"
+          Bevel="Lowered"
+          CanvasName="FZVAGNT_1_CANVAS"
+          KeyboardNavigable="true"
+          Height="14"
+          Hint="Enter value for : FWBAGNT_ORGN_CODE"
+          ShowHorizontalScrollbar="false"
+          ItemType="Text Item"
+          DataType="Char"
+          UpdateAllowed="true"
+          DirtyInfo="true"
+          VisualAttributeName="G$_NVA_TEXT_ITEM"
+          Label="Orgn"
+          QueryAllowed="true"
+          Visible="true"
+          QueryLength="6"
+          ShowVerticalScrollbar="false"/>
+         <Item Name="FWBAGNT_CONTROL_AGENT1" Enabled="true" DistanceBetweenRecords="0" Width="140" MaximumLength="40" CompressionQuality="None" XPosition="44" YPosition="41" DatabaseItem="true" Bevel="Lowered" CanvasName="FZVAGNT_1_CANVAS" KeyboardNavigable="true" Height="14" Hint="Enter value for : FWBAGNT_CONTROL_AGENT1" ShowHorizontalScrollbar="false" ItemType="Text Item" DataType="Char" UpdateAllowed="true" DirtyInfo="true" VisualAttributeName="G$_NVA_TEXT_ITEM" Label="Control Agent 1" QueryAllowed="true" Visible="true" QueryLength="40" ShowVerticalScrollbar="false"/>
+         <Item Name="FWBAGNT_CONTROL_AGENT2" Enabled="true" DistanceBetweenRecords="0" Width="140" MaximumLength="40" CompressionQuality="None" XPosition="185" YPosition="41" DatabaseItem="true" Bevel="Lowered" CanvasName="FZVAGNT_1_CANVAS" KeyboardNavigable="true" Height="14" Hint="Enter value for : FWBAGNT_CONTROL_AGENT2" ShowHorizontalScrollbar="false" ItemType="Text Item" DataType="Char" UpdateAllowed="true" DirtyInfo="true" VisualAttributeName="G$_NVA_TEXT_ITEM" Label="Control Agent 2" QueryAllowed="true" Visible="true" QueryLength="40" ShowVerticalScrollbar="false"/>
+         <Item Name="FWBAGNT_CONTROL_AGENT3" Enabled="true" DistanceBetweenRecords="0" Width="140" MaximumLength="40" CompressionQuality="None" XPosition="326" YPosition="41" DatabaseItem="true" Bevel="Lowered" CanvasName="FZVAGNT_1_CANVAS" KeyboardNavigable="true" Height="14" Hint="Enter value for : FWBAGNT_CONTROL_AGENT3" ShowHorizontalScrollbar="false" ItemType="Text Item" DataType="Char" UpdateAllowed="true" DirtyInfo="true" VisualAttributeName="G$_NVA_TEXT_ITEM" Label="Control Agent 3" QueryAllowed="true" Visible="true" QueryLength="40" ShowVerticalScrollbar="false"/>
+      </Block>
+      <Block Name="FORM_HEADER" RecordsBufferedCount="1" RecordsDisplayCount="1" RecordsFetchedCount="0" EnforcedColumnSecurity="false" InsertAllowed="true" EnforcedPrimaryKey="false" RecordOrientation="Vertical" UpdateAllowed="true" DeleteAllowed="true" DirtyInfo="true" VisualAttributeName="DEFAULT" KeyMode="Unique" DatabaseBlock="false" QueryDataSourceType="None" QueryAllowed="true" LockMode="Immediate" DMLDataType="None" NavigationStyle="Same Record" ShowScrollbar="false">
+         <Item Name="CURRENT_INSTITUTION" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="false" DistanceBetweenRecords="0" ListStyle="Poplist" Width="180" MaximumLength="30" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="144" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="true" QueryLength="30" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+         <Item Name="CURRENT_DATE" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="false" DistanceBetweenRecords="0" ListStyle="Poplist" Width="66" MaximumLength="11" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="342" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="true" QueryLength="11" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+         <Item Name="CURRENT_TIME" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="false" DistanceBetweenRecords="0" ListStyle="Poplist" Width="48" MaximumLength="8" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="420" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="true" QueryLength="8" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+         <Item Name="CURRENT_FORM" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="true" DistanceBetweenRecords="0" ListStyle="Poplist" Width="42" MaximumLength="7" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="6" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="true" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="true" QueryLength="7" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+         <Item Name="CURRENT_RELEASE" ValidateFromList="false" LovXPosition="0" Justification="Left" LovYPosition="0" ListStyle="Poplist" Width="60" MaximumLength="10" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="60" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Comment="AUDIT TRAIL: 2.1&amp;#10;1. Forms 4.0 conversion.                                     JF 05/23/94&amp;#10;AUDIT TRAIL: 2.1.1&amp;#10;1. VGA corrections.                                          JF 03/17/95&amp;#10;2. Corrected form title.                                     JF 03/27/95&amp;#10;3. MAC/CHARACTER-UPDATE                                      ET 04/26/95&amp;#10;AUDIT TRAIL: 2.1.5&amp;#10;1. Role Security                                             TK 08/16/95&amp;#10;2. Default dates using $$DATE$$ (also $$DATETIME$$)          TK 10/19/95&amp;#10;   use operating system date (easily changed by user on&amp;#10;   client device).  Changed default date value from $$DATE$$&amp;#10;   to $$DBDATE$$ for item TTVPAYT_ACTIVITY_DATE.&amp;#10;3. Forms 4.5 conversion.                                     JF 04/24/96&amp;#10;AUDIT TRAIL END" PrimaryKey="false" DefaultButton="false" QueryAllowed="false" Visible="true" QueryLength="10" DisplayQuality="High" EditXPosition="0" EditYPosition="0" Enabled="false" DistanceBetweenRecords="0" FixedLength="false" Required="false" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" LockRecord="false" ShowVerticalScrollbar="false"/>
+         <Item Name="HEADER_FLAG" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="false" DistanceBetweenRecords="0" ListStyle="Poplist" Width="6" MaximumLength="1" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="0" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="false" QueryLength="1" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+         <Item Name="WORKFLD" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="false" DistanceBetweenRecords="0" ListStyle="Poplist" Width="6" MaximumLength="60" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="0" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="false" QueryLength="0" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+         <Item Name="WORKDATE" ValidateFromList="false" EditXPosition="0" LovXPosition="0" EditYPosition="0" Justification="Left" LovYPosition="0" Enabled="false" DistanceBetweenRecords="0" ListStyle="Poplist" Width="6" MaximumLength="60" FixedLength="false" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="0" Required="false" YPosition="0" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="true" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Text Item" DataType="Char" UpdateAllowed="false" UpdateIfNull="false" PrimaryKey="false" KeepCursorPosition="false" VisualAttributeName="DEFAULT" DefaultButton="false" QueryAllowed="false" Visible="false" QueryLength="0" LockRecord="false" DisplayQuality="High" ShowVerticalScrollbar="false"/>
+      </Block>
+      <Block Name="BUTTON_CONTROL_BLOCK" RecordsBufferedCount="0" RecordsDisplayCount="1" RecordsFetchedCount="0" EnforcedColumnSecurity="false" InsertAllowed="true" EnforcedPrimaryKey="false" RecordOrientation="Vertical" UpdateAllowed="true" DeleteAllowed="true" VisualAttributeName="DEFAULT" KeyMode="Unique" DatabaseBlock="false" QueryDataSourceType="None" QueryAllowed="true" LockMode="Immediate" DMLDataType="None" NavigationStyle="Same Record" ShowScrollbar="false">
+         <Item Name="TTVPAYT_1_ROLLBACK_BTN" ValidateFromList="false" LovXPosition="0" Justification="Left" LovYPosition="0" ListStyle="Poplist" Width="60" MaximumLength="14" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="270" YPosition="306" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="false" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" PrimaryKey="false" DirtyInfo="true" DefaultButton="false" QueryAllowed="true" Visible="true" QueryLength="0" DisplayQuality="High" EditXPosition="0" EditYPosition="0" Enabled="true" DistanceBetweenRecords="0" FixedLength="false" Required="false" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Push Button" DataType="Char" UpdateAllowed="true" UpdateIfNull="false" KeepCursorPosition="false" VisualAttributeName="G$_NVA_BUTTON_ITEM" Label="Rollback" LockRecord="false" ShowVerticalScrollbar="false"/>
+         <Item Name="TTVPAYT_1_SAVE_BTN" ValidateFromList="false" LovXPosition="0" Justification="Left" LovYPosition="0" ListStyle="Poplist" Width="60" MaximumLength="14" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="336" YPosition="306" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="false" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" PrimaryKey="false" DirtyInfo="true" DefaultButton="false" QueryAllowed="true" Visible="true" QueryLength="0" DisplayQuality="High" EditXPosition="0" EditYPosition="0" Enabled="true" DistanceBetweenRecords="0" FixedLength="false" Required="false" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Push Button" DataType="Char" UpdateAllowed="true" UpdateIfNull="false" KeepCursorPosition="false" VisualAttributeName="G$_NVA_BUTTON_ITEM" Label="Save" LockRecord="false" ShowVerticalScrollbar="false"/>
+         <Item Name="TTVPAYT_1_EXIT_BTN" ValidateFromList="false" LovXPosition="0" Justification="Left" LovYPosition="0" ListStyle="Poplist" Width="60" MaximumLength="14" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="402" YPosition="306" DatabaseItem="false" Bevel="Lowered" AutoHint="false" MouseNavigate="false" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" PrimaryKey="false" DirtyInfo="true" DefaultButton="false" QueryAllowed="true" Visible="true" QueryLength="0" DisplayQuality="High" EditXPosition="0" EditYPosition="0" Enabled="true" DistanceBetweenRecords="0" FixedLength="false" Required="false" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Push Button" DataType="Char" UpdateAllowed="true" UpdateIfNull="false" KeepCursorPosition="false" VisualAttributeName="G$_NVA_BUTTON_ITEM" Label="Exit" LockRecord="false" ShowVerticalScrollbar="false"/>
+         <Item Name="TTVPAYT_1_EXITVALUE_BTN" ValidateFromList="false" LovXPosition="0" Justification="Left" LovYPosition="0" ListStyle="Poplist" Width="60" MaximumLength="14" WrapStyle="None" AutoSkip="false" CompressionQuality="None" XPosition="204" YPosition="306" DatabaseItem="false" Bevel="Raised" AutoHint="false" MouseNavigate="false" MultiLine="false" CaseInsensitiveQuery="false" KeyboardNavigable="false" CaseRestriction="Mixed" CheckBoxOtherValues="Not Allowed" PrimaryKey="false" DirtyInfo="true" DefaultButton="false" QueryAllowed="true" Visible="true" QueryLength="0" DisplayQuality="High" EditXPosition="0" EditYPosition="0" Enabled="true" DistanceBetweenRecords="0" FixedLength="false" Required="false" Height="17" ConcealData="false" SizingStyle="Crop" ShowHorizontalScrollbar="false" Iconic="false" InsertAllowed="true" ItemType="Push Button" DataType="Char" UpdateAllowed="true" UpdateIfNull="false" KeepCursorPosition="false" VisualAttributeName="G$_NVA_BUTTON_ITEM" Label="Select" LockRecord="false" ShowVerticalScrollbar="false"/>
+      </Block>
+      <Canvas Name="FZVAGNT_1_CANVAS" DirtyInfo="true" VisualAttributeName="DEFAULT" Width="479" WindowName="MAIN_WINDOW" Height="327" ViewportHeight="324" ViewportXPosition="0" ViewportWidth="360" ViewportYPosition="0">
+         <Graphics Name="GROUP1" GraphicsType="Group" HorizontalMargin="5" ScrollbarWidth="9" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+            <Graphics Name="TEXT2" InternalLineWidth="113" InternalRotationAngle="0" Width="0" EdgeForegroundColor="black" EdgeBackColor="black" FillPattern="none" EdgePattern="none" DashStyle="Solid" CapStyle="Butt" JoinStyle="Mitre" LineSpacing="Single" CustomSpacing="0" FixedBoundingBox="false" BackColor="white" XPosition="13" WrapText="true" YPosition="27" BoundingBoxScalable="true" Bevel="None" FontScaleable="false" HorizontalOrigin="Left" VerticalOrigin="Top" HorizontalJustification="Start" ForegroundColor="black" GraphicsFontWeight="Demilight" VerticalJustification="Top" GraphicsFontSpacing="Normal" GraphicsType="Text" ScrollbarWidth="9" Height="0" GraphicsFontName="MS Sans Serif" GraphicsFontSize="1000" GraphicsFontStyle="0" GraphicsText="Orgn" GraphicsFontColor="black" GraphicsFontColorCode="0" LanguageDirection="Default" HorizontalMargin="5" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+               <CompoundText Name="CMPTXT3">
+                  <TextSegment Name="TEXTSTR4" FontName="MS Sans Serif" FontSize="1000" FontStyle="Plain" DirtyInfo="true" FontWeight="Demilight" FontSpacing="Normal" ForegroundColor="black" Text="Orgn"/>
+               </CompoundText>
+            </Graphics>
+         </Graphics>
+         <Graphics Name="GROUP5" GraphicsType="Group" HorizontalMargin="5" ScrollbarWidth="9" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+            <Graphics Name="TEXT6" InternalLineWidth="113" InternalRotationAngle="0" Width="0" EdgeForegroundColor="black" EdgeBackColor="black" FillPattern="none" EdgePattern="none" DashStyle="Solid" CapStyle="Butt" JoinStyle="Mitre" LineSpacing="Single" CustomSpacing="0" FixedBoundingBox="false" BackColor="white" XPosition="59" WrapText="true" YPosition="27" BoundingBoxScalable="true" Bevel="None" FontScaleable="false" HorizontalOrigin="Left" VerticalOrigin="Top" HorizontalJustification="Start" ForegroundColor="black" GraphicsFontWeight="Demilight" VerticalJustification="Top" GraphicsFontSpacing="Normal" GraphicsType="Text" ScrollbarWidth="9" Height="0" GraphicsFontName="MS Sans Serif" GraphicsFontSize="1000" GraphicsFontStyle="0" GraphicsText="Control Agent 1" GraphicsFontColor="black" GraphicsFontColorCode="0" LanguageDirection="Default" HorizontalMargin="5" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+               <CompoundText Name="CMPTXT7">
+                  <TextSegment Name="TEXTSTR8" FontName="MS Sans Serif" FontSize="1000" FontStyle="Plain" DirtyInfo="true" FontWeight="Demilight" FontSpacing="Normal" ForegroundColor="black" Text="Control Agent 1"/>
+               </CompoundText>
+            </Graphics>
+         </Graphics>
+         <Graphics Name="GROUP9" GraphicsType="Group" HorizontalMargin="5" ScrollbarWidth="9" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+            <Graphics Name="TEXT10" InternalLineWidth="113" InternalRotationAngle="0" Width="0" EdgeForegroundColor="black" EdgeBackColor="black" FillPattern="none" EdgePattern="none" DashStyle="Solid" CapStyle="Butt" JoinStyle="Mitre" LineSpacing="Single" CustomSpacing="0" FixedBoundingBox="false" BackColor="white" XPosition="215" WrapText="true" YPosition="27" BoundingBoxScalable="true" Bevel="None" FontScaleable="false" HorizontalOrigin="Left" VerticalOrigin="Top" HorizontalJustification="Start" ForegroundColor="black" GraphicsFontWeight="Demilight" VerticalJustification="Top" GraphicsFontSpacing="Normal" GraphicsType="Text" ScrollbarWidth="9" Height="0" GraphicsFontName="MS Sans Serif" GraphicsFontSize="1000" GraphicsFontStyle="0" GraphicsText="Control Agent 2" GraphicsFontColor="black" GraphicsFontColorCode="0" LanguageDirection="Default" HorizontalMargin="5" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+               <CompoundText Name="CMPTXT11">
+                  <TextSegment Name="TEXTSTR12" FontName="MS Sans Serif" FontSize="1000" FontStyle="Plain" DirtyInfo="true" FontWeight="Demilight" FontSpacing="Normal" ForegroundColor="black" Text="Control Agent 2"/>
+               </CompoundText>
+            </Graphics>
+         </Graphics>
+         <Graphics Name="GROUP13" GraphicsType="Group" HorizontalMargin="5" ScrollbarWidth="9" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+            <Graphics Name="TEXT14" InternalLineWidth="113" InternalRotationAngle="0" Width="0" EdgeForegroundColor="black" EdgeBackColor="black" FillPattern="none" EdgePattern="none" DashStyle="Solid" CapStyle="Butt" JoinStyle="Mitre" LineSpacing="Single" CustomSpacing="0" FixedBoundingBox="false" BackColor="white" XPosition="362" WrapText="true" YPosition="27" BoundingBoxScalable="true" Bevel="None" FontScaleable="false" HorizontalOrigin="Left" VerticalOrigin="Top" HorizontalJustification="Start" ForegroundColor="black" GraphicsFontWeight="Demilight" VerticalJustification="Top" GraphicsFontSpacing="Normal" GraphicsType="Text" ScrollbarWidth="9" Height="0" GraphicsFontName="MS Sans Serif" GraphicsFontSize="1000" GraphicsFontStyle="0" GraphicsText="Control Agent 3" GraphicsFontColor="black" GraphicsFontColorCode="0" LanguageDirection="Default" HorizontalMargin="5" VerticalMargin="14" HorizontalObjectOffset="9" StartPromptOffset="5">
+               <CompoundText Name="CMPTXT15">
+                  <TextSegment Name="TEXTSTR16" FontName="MS Sans Serif" FontSize="1000" FontStyle="Plain" DirtyInfo="true" FontWeight="Demilight" FontSpacing="Normal" ForegroundColor="black" Text="Control Agent 3"/>
+               </CompoundText>
+            </Graphics>
+         </Graphics>
+      </Canvas>
+      <ProgramUnit
+        Name="AUDIT_TRAIL_3_0_B2K"
+        ProgramUnitText="PROCEDURE AUDIT_TRAIL_3_0_B2K IS&amp;#10;/*&amp;#10;AUDIT TRAIL: 3.0                                        INIT   DATE&amp;#10;1. Enhancements for Banner2000 upgrade.  These include   SQ  01/01/97&amp;#10;   adding an object group which contains the objects for&amp;#10;   the toolbar, adding an object group which highlights&amp;#10;   the active record within a block, a mouse-doubleclick&amp;#10;   and when-timer-expired trigger at the form level and&amp;#10;   this audit trail.&amp;#10;AUDIT TRAIL END&amp;#10;*/&amp;#10;BEGIN&amp;#10;  NULL;&amp;#10;END;"
+        ProgramUnitType="Procedure"/>
+      <ProgramUnit
+        Name="AUDIT_TRAIL_4_0_B2K"
+        ProgramUnitText="PROCEDURE AUDIT_TRAIL_4_0_B2K IS&amp;#10;BEGIN&amp;#10;/* Audit Trail: 4.0&amp;#10;&amp;#10;1. Defect.......None&amp;#10;   Signoff......Thuy Nguyen&#x9;7/27/98&amp;#10;   Fix..........UI Changes&amp;#10;&amp;#10;2. Defect........None&amp;#10;   Signoff.......Tony Liou Wang  01/28/99&amp;#10;   Fix...........Phase II UI Changes&amp;#10;&amp;#10;Audit Trail End  */&amp;#10;&amp;#10;NULL;&amp;#10;END;"
+        ProgramUnitType="Procedure"/>
+      <ProgramUnit
+        Name="ATVI_AUDIT_TRAIL"
+        ProgramUnitText="PROCEDURE ATVI_AUDIT_TRAIL IS&amp;#10;BEGIN&amp;#10;&#x9; /*&amp;#10;  ********** TVI Audit Trail ************&amp;#10;15-MAR-01 Converted to Forms45                   SPeterson&amp;#10;30-JUL-02 Converted to Forms6i                   SPeterson&amp;#10;&amp;#10;  ********* End TVI Audit Trail ********&amp;#10;*/&amp;#10;&#x9;Null; &amp;#10;END;"
+        ProgramUnitType="Procedure"/>
+      <PropertyClass Name="G$_FORM_CLASS" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_FORM_CLASS" ParentFilename="GOQOLIB" ParentType="29">
+         <Trigger Name="G$_VERIFY_ACCESS" SubclassSubObject="true"/>
+         <Trigger Name="G$_REVOKE_ACCESS" SubclassSubObject="true"/>
+         <Trigger Name="PRE-FORM" SubclassSubObject="true"/>
+         <Trigger Name="PRE_FORM_TRG" SubclassSubObject="true"/>
+         <Trigger Name="POST-FORM" SubclassSubObject="true"/>
+         <Trigger Name="POST_FORM_TRG" SubclassSubObject="true"/>
+         <Trigger Name="PRE-BLOCK" SubclassSubObject="true"/>
+         <Trigger Name="PRE_BLOCK_TRG" SubclassSubObject="true"/>
+         <Trigger Name="POST-BLOCK" SubclassSubObject="true"/>
+         <Trigger Name="POST_BLOCK_TRG" SubclassSubObject="true"/>
+         <Trigger Name="PRE-INSERT" SubclassSubObject="true"/>
+         <Trigger Name="PRE-UPDATE" SubclassSubObject="true"/>
+         <Trigger Name="ON-ERROR" SubclassSubObject="true"/>
+         <Trigger Name="ON-ROLLBACK" SubclassSubObject="true"/>
+         <Trigger Name="ON_ROLLBACK_TRG" SubclassSubObject="true"/>
+         <Trigger Name="ON-SELECT" SubclassSubObject="true"/>
+         <Trigger Name="POST-FORMS-COMMIT" SubclassSubObject="true"/>
+         <Trigger Name="POST_FORMS_COMMIT_TRG" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-BUTTON-PRESSED" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-NEW-FORM-INSTANCE" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-NEW-BLOCK-INSTANCE" SubclassSubObject="true"/>
+         <Trigger Name="WHEN_NEW_BLOCK_INSTANCE_TRG" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-MOUSE-DOUBLECLICK" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-TIMER-EXPIRED" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-WINDOW-ACTIVATED" SubclassSubObject="true"/>
+         <Trigger Name="WHEN_WINDOW_ACTIVATED_TRG" SubclassSubObject="true"/>
+         <Trigger Name="WHEN-WINDOW-CLOSED" SubclassSubObject="true"/>
+         <Trigger Name="KEY-CLRFRM" SubclassSubObject="true"/>
+         <Trigger Name="KEY-HELP" SubclassSubObject="true"/>
+         <Trigger Name="KEY-F2" SubclassSubObject="true"/>
+         <Trigger Name="KEY-DOWN" SubclassSubObject="true"/>
+         <Trigger Name="KEY-UP" SubclassSubObject="true"/>
+         <Trigger Name="KEY-LISTVAL" SubclassSubObject="true"/>
+         <Trigger Name="KEY-MENU" SubclassSubObject="true"/>
+         <Trigger Name="KEY-NXTBLK" SubclassSubObject="true"/>
+         <Trigger Name="KEY-PRVBLK" SubclassSubObject="true"/>
+         <Trigger Name="KEY-NXTREC" SubclassSubObject="true"/>
+         <Trigger Name="KEY-PRVREC" SubclassSubObject="true"/>
+         <Trigger Name="KEY-NXTSET" SubclassSubObject="true"/>
+         <Trigger Name="KEY-SCRUP" SubclassSubObject="true"/>
+         <Trigger Name="KEY-SCRDOWN" SubclassSubObject="true"/>
+         <Trigger Name="KEY-PRINT" SubclassSubObject="true"/>
+         <Trigger Name="KEY-ENTQRY" SubclassSubObject="true"/>
+         <Trigger Name="KEY-EXEQRY" SubclassSubObject="true"/>
+         <Trigger Name="KEY-EXIT" SubclassSubObject="true"/>
+         <Trigger Name="KEY_EXIT_TRG" SubclassSubObject="true"/>
+         <Trigger Name="KEY-NXTKEY" SubclassSubObject="true"/>
+         <Trigger Name="KEY_NXTKEY_TRG" SubclassSubObject="true"/>
+         <Trigger Name="GLOBAL_COPY" SubclassSubObject="true"/>
+         <Trigger Name="LIST_VALUES_COPY" SubclassSubObject="true"/>
+         <Trigger Name="LOAD_FORM_HEADER" SubclassSubObject="true"/>
+         <Trigger Name="LOAD_CURRENT_RELEASE" SubclassSubObject="true"/>
+         <Trigger Name="SAVE_KEYS" SubclassSubObject="true"/>
+         <Trigger Name="ENABLE_KEYS" SubclassSubObject="true"/>
+         <Trigger Name="DISABLE_KEYS" SubclassSubObject="true"/>
+         <Trigger Name="INVALID_OPTION_MSG" SubclassSubObject="true"/>
+         <Trigger Name="UPDATE_ACTIVITY" SubclassSubObject="true"/>
+      </PropertyClass>
+      <PropertyClass Name="G$_ICON_BTN_CLASS" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_ICON_BTN_CLASS" ParentFilename="GOQOLIB" ParentType="29">
+         <Trigger Name="WHEN-MOUSE-CLICK" SubclassSubObject="true"/>
+      </PropertyClass>
+      <Trigger
+        Name="WHEN-NEW-FORM-INSTANCE"
+        TriggerText="Execute_query;"/>
+      <Trigger
+        Name="LOAD_CURRENT_RELEASE"
+        FireInQuery="true"
+        TriggerText=":CURRENT_RELEASE := '5.0' ;&amp;#10;"
+        DisplayInKeyboardHelp="false"/>
+      <Trigger
+        Name="UPDATE_ACTIVITY_DATE"
+        FireInQuery="false"
+        TriggerText="   :WORKDATE := :SYSTEM.CURRENT_BLOCK ;&amp;#10;--&amp;#10;   :WORKDATE := SUBSTR(:WORKDATE, 1, 7) ;&amp;#10;--&amp;#10;   :WORKDATE := RPAD(:WORKDATE, 21, '_ACTIVITY_DATE') ;&amp;#10;--&amp;#10;   COPY( :CURRENT_DATE, :WORKDATE ) ;   &amp;#10;--&amp;#10;--   :TTVPAYT_ACTIVITY_DATE := SYSDATE; &amp;#10;"
+        DisplayInKeyboardHelp="true"/>
+      <Trigger
+        Name="INVALID_FUNCTION_MSG"
+        FireInQuery="false"
+        TriggerText="   MESSAGE( '*ERROR* Invalid function; press SHOW KEYS key' ||&amp;#10;      ' for valid functions.' ) ;&amp;#10;   RAISE FORM_TRIGGER_FAILURE ;"
+        DisplayInKeyboardHelp="true"/>
+      <Trigger
+        Name="KEY-NXTKEY"
+        DirtyInfo="true"
+        KeyboardHelpText="Exit With Value"
+        FireInQuery="false"
+        TriggerText="   :WORKFLD := :SYSTEM.CURRENT_FIELD ;&amp;#10;--&amp;#10;   :WORKFLD := SUBSTR(:WORKFLD, 1, 8) ;&amp;#10;--&amp;#10;   :WORKFLD := RPAD(:WORKFLD, 12, 'CODE') ;&amp;#10;--&amp;#10;   :GLOBAL.VALUE := NAME_IN( NAME_IN( 'WORKFLD' ) ) ;&amp;#10;--&amp;#10;---012899   EXIT_FORM ;&amp;#10;   G$_GOQOLIB_KEY_TRIGGER.B2K_EXIT_FORM;"
+        DisplayInKeyboardHelp="true"/>
+      <Trigger
+        Name="KEY-EXIT"
+        DirtyInfo="true"
+        KeyboardHelpText="Exit Without Value"
+        FireInQuery="false"
+        TriggerText="   :GLOBAL.VALUE := '' ;&amp;#10;--&amp;#10;---012899   EXIT_FORM ;&amp;#10;   G$_GOQOLIB_KEY_TRIGGER.B2K_EXIT_FORM;"
+        DisplayInKeyboardHelp="true"/>
+      <Trigger
+        Name="PRE-UPDATE"
+        FireInQuery="false"
+        TriggerText="--   EXECUTE_TRIGGER( 'UPDATE_ACTIVITY_DATE' ) ;&amp;#10;   G$_CHECK_FAILURE ;"
+        DisplayInKeyboardHelp="true"/>
+      <Trigger
+        Name="PRE-INSERT"
+        FireInQuery="false"
+        TriggerText="   EXECUTE_TRIGGER( 'UPDATE_ACTIVITY_DATE' ) ;&amp;#10;   G$_CHECK_FAILURE ;"
+        DisplayInKeyboardHelp="true"/>
+      <VisualAttribute Name="G$_NVA_BUTTON_ITEM" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_NVA_BUTTON_ITEM" ParentFilename="GOQOLIB" ParentType="39"/>
+      <VisualAttribute Name="G$_NVA_TEXT_ITEM" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_NVA_TEXT_ITEM" ParentFilename="GOQOLIB" ParentType="39"/>
+      <VisualAttribute Name="G$_NVA_CHECK_BOX" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_NVA_CHECK_BOX" ParentFilename="GOQOLIB" ParentType="39"/>
+      <Window Name="MAIN_WINDOW" ShowHorizontalScrollbar="false" DirtyInfo="true" VisualAttributeName="DEFAULT" Title="Payment Type Code Validation Form" ShowVerticalScrollbar="false"/>
+      <ObjectGroup Name="G$_TOOLBAR" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_TOOLBAR" ParentFilename="GOQOLIB" ParentType="23">
+         <ObjectGroupChild Name="G$_NAV_CANVAS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NAV_BLOCK" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_DATA_SEPARATOR_LINE" SubclassSubObject="true"/>
+      </ObjectGroup>
+      <ObjectGroup Name="G$_VALIDATION_FORM" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_VALIDATION_FORM" ParentFilename="GOQOLIB" ParentType="23">
+         <ObjectGroupChild Name="G$_DEFAULT_PM" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_CAUTION_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_CAUTION_OK_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_INFO_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_WARNING_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_EXTEND_SOLUT_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_EXTEND_SOLUT_2_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_EXIT_FORM_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_CLOSE_FORM_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_PIPE_MESSAGE_ALERT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="TEMP_CANVAS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_CALENDAR_BTN_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_VAL_FORM_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_FLASHLITE_BTN_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_FS_WINDOW_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_FS_CANVAS_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_AFTER_TRG_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_BEFORE_TRG_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_DATETIME_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_DATE_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_DATA_SEPARATOR_LINE_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NON_ICON_BTN_CLASS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_ALERT_GRAY" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_ITEM_REQUIRED" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_CANVAS" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_BUTTON_ITEM" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_FRAME" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_KEY_BLOCK_ITEM" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_MENU_ITEM" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_PROMPT" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_PROMPT_CODE" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_RADIO_BUTTON" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_SCROLLBAR" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_DATA_SEPARATOR_LINE" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_NVA_WINDOW" SubclassSubObject="true"/>
+         <ObjectGroupChild Name="G$_PREFERENCES" SubclassSubObject="true"/>
+      </ObjectGroup>
+      <ObjectGroup Name="G$_HIGHLITE_RECORD" ParentModule="GOQOLIB" ParentModuleType="12" ParentName="G$_HIGHLITE_RECORD" ParentFilename="GOQOLIB" ParentType="23">
+         <ObjectGroupChild Name="G$_NVA_HIGHLITE_TEXT" SubclassSubObject="true"/>
+      </ObjectGroup>
+   </FormModule>
+</Module>

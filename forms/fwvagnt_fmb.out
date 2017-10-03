@@ -1,0 +1,45 @@
+Oracle Forms 12.2.1 Forms to XML Tool
+Copyright(c) 2001, 2017, Oracle and/or its affiliates.  All rights reserved.
+
+Processing module fwvagnt.fmb
+ERROR Object group child G$_NAV_CANVAS has no real object.
+ERROR Object group child G$_NAV_BLOCK has no real object.
+ERROR Object group child G$_NVA_DATA_SEPARATOR_LINE has no real object.
+ERROR Object group child G$_DEFAULT_PM has no real object.
+ERROR Object group child G$_CAUTION_ALERT has no real object.
+ERROR Object group child G$_CAUTION_OK_ALERT has no real object.
+ERROR Object group child G$_INFO_ALERT has no real object.
+ERROR Object group child G$_WARNING_ALERT has no real object.
+ERROR Object group child G$_EXTEND_SOLUT_ALERT has no real object.
+ERROR Object group child G$_EXTEND_SOLUT_2_ALERT has no real object.
+ERROR Object group child G$_EXIT_FORM_ALERT has no real object.
+ERROR Object group child G$_CLOSE_FORM_ALERT has no real object.
+ERROR Object group child G$_PIPE_MESSAGE_ALERT has no real object.
+ERROR Object group child TEMP_CANVAS has no real object.
+ERROR Object group child G$_CALENDAR_BTN_CLASS has no real object.
+ERROR Object group child G$_VAL_FORM_CLASS has no real object.
+ERROR Object group child G$_FLASHLITE_BTN_CLASS has no real object.
+ERROR Object group child G$_FS_WINDOW_CLASS has no real object.
+ERROR Object group child G$_FS_CANVAS_CLASS has no real object.
+ERROR Object group child G$_AFTER_TRG_CLASS has no real object.
+ERROR Object group child G$_BEFORE_TRG_CLASS has no real object.
+ERROR Object group child G$_DATETIME_CLASS has no real object.
+ERROR Object group child G$_DATE_CLASS has no real object.
+ERROR Object group child G$_DATA_SEPARATOR_LINE_CLASS has no real object.
+ERROR Object group child G$_NON_ICON_BTN_CLASS has no real object.
+ERROR Object group child G$_NVA_ALERT_GRAY has no real object.
+ERROR Object group child G$_NVA_ITEM_REQUIRED has no real object.
+ERROR Object group child G$_NVA_CANVAS has no real object.
+ERROR Object group child G$_NVA_BUTTON_ITEM has no real object.
+ERROR Object group child G$_NVA_FRAME has no real object.
+ERROR Object group child G$_NVA_KEY_BLOCK_ITEM has no real object.
+ERROR Object group child G$_NVA_MENU_ITEM has no real object.
+ERROR Object group child G$_NVA_PROMPT has no real object.
+ERROR Object group child G$_NVA_PROMPT_CODE has no real object.
+ERROR Object group child G$_NVA_RADIO_BUTTON has no real object.
+ERROR Object group child G$_NVA_SCROLLBAR has no real object.
+ERROR Object group child G$_NVA_DATA_SEPARATOR_LINE has no real object.
+ERROR Object group child G$_NVA_WINDOW has no real object.
+ERROR Object group child G$_PREFERENCES has no real object.
+ERROR Object group child G$_NVA_HIGHLITE_TEXT has no real object.
+XML Module saved as fwvagnt_fmb.xml
