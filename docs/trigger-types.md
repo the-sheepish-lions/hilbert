@@ -1,0 +1,59 @@
+Types of Triggers in Oracle Forms
+=================================
+
+See [http://kashif-oracle-forms.blogspot.com/2009/07/types-of-triggers-in-forms.html](http://kashif-oracle-forms.blogspot.com/2009/07/types-of-triggers-in-forms.html)
+
+- Block-processing
+  - When-Create-Record
+  - When-Clear-Block
+  - When-Database-Record
+  - When-Remove-Record
+- Interface-event
+  - When-Button-Pressed
+  - When-Checkbox-Changed
+  - Key-[all]
+  - When-Radio-Changed
+  - When-Timer-Expired
+  - When-Window-Activated
+  - When-Window-Resized
+- Master-detail
+  - On-Check-Delete-Master
+  - On-Clear-Details
+  - On-Populate-Details
+- Message-handling
+  - On-Error
+  - On-Message
+- Navigational
+  - Pre-Form
+  - Post-Form
+  - Pre-Block
+  - Post-Block
+  - Pre-Record
+  - Post-Record
+  - Pre-Text-Item
+  - Post-Text-Item
+  - When-New-Form-Instance
+  - When-New-Block-Instance
+  - When-New-Record-Instance
+  - When-New-Item-Instance
+- Query-time
+  - Pre-Query
+  - Post-Query
+- Transactional
+  - On-Delete
+  - On-Insert
+  - On-Lock
+  - On-Logon
+  - On-Update
+  - Post-Database-Commit
+  - Post-Delete
+  - Post-Forms-Commit
+  - Post-Insert
+  - Post-Update
+  - Pre-Commit
+  - Pre-Delete
+  - Pre-Insert
+  - Pre-Update
+- Validation
+  - When-Validate-Item
+  - When-Validate-Record

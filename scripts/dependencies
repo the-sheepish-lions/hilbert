@@ -1,0 +1,33 @@
+#!/usr/bin/env groovy
+
+def files    = this.args
+def triggers = []
+def deps     = []
+
+files.each {
+    module = new XmlSlurper().parse(it)
+    module.FormModule[0].children().each {
+        if (it.@ParentFilename) {
+            /*file = it.@ParentFilename.toString().toLowerCase().concat('_fmb.xml')
+            kids = it.children()
+            println file
+            kids.each {
+                println it.@Name
+            }*/
+            deps.push(it)
+        }
+        else if (it.name() == 'Trigger') {
+            triggers.push(it)
+        }
+    }
+}
+
+println "TRIGGERS:"
+triggers.each {
+    println 'Trigger: ' + it.@Name
+}
+
+println "DEPENDENCIES:"
+deps.each {
+    println 'Dep: ' + it.@Name.toString() + ': ' + it.@ParentFilename.toString()
+}
