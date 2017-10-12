@@ -1,33 +1,33 @@
 #!/usr/bin/env groovy
 
+import groovy.util.slurpersupport.NodeChild
+
 def files    = this.args
 def triggers = []
 def deps     = []
 
-files.each {
-    module = new XmlSlurper().parse(it)
-    module.FormModule[0].children().each {
-        if (it.@ParentFilename) {
-            /*file = it.@ParentFilename.toString().toLowerCase().concat('_fmb.xml')
-            kids = it.children()
-            println file
-            kids.each {
-                println it.@Name
-            }*/
-            deps.push(it)
-        }
-        else if (it.name() == 'Trigger') {
-            triggers.push(it)
-        }
+def processNode
+processNode = { node ->
+  //println node.name()
+  if (node.name() == 'Trigger') {
+    println "Trigger: " + node.@Name
+  }
+  else if (node.name() == 'PropertyClass') {
+    println 'PropertyClass: ' + node.@Name
+  }
+  if (node.children().size() > 0) {
+    node.children().each {
+      processNode(it)
     }
+  }
 }
 
-println "TRIGGERS:"
-triggers.each {
-    println 'Trigger: ' + it.@Name
-}
-
-println "DEPENDENCIES:"
-deps.each {
-    println 'Dep: ' + it.@Name.toString() + ': ' + it.@ParentFilename.toString()
+files.each {
+    println "Processing " + it + "..."
+    module = new XmlSlurper().parse(it)
+    kids = module.children()
+    if (kids.size() > 0) {
+        kids.each { processNode(it) }
+    }
+    println "DONE."
 }
