@@ -41,7 +41,32 @@
           Visible="true"
           QueryLength="6"
           ShowVerticalScrollbar="false"/>
-         <Item Name="FWBAGNT_CONTROL_AGENT1" Enabled="true" DistanceBetweenRecords="0" Width="140" MaximumLength="40" CompressionQuality="None" XPosition="44" YPosition="41" DatabaseItem="true" Bevel="Lowered" CanvasName="FZVAGNT_1_CANVAS" KeyboardNavigable="true" Height="14" Hint="Enter value for : FWBAGNT_CONTROL_AGENT1" ShowHorizontalScrollbar="false" ItemType="Text Item" DataType="Char" UpdateAllowed="true" DirtyInfo="true" VisualAttributeName="G$_NVA_TEXT_ITEM" Label="Control Agent 1" QueryAllowed="true" Visible="true" QueryLength="40" ShowVerticalScrollbar="false"/>
+         <Item
+           Name="FWBAGNT_CONTROL_AGENT1"
+           Enabled="true"
+           DistanceBetweenRecords="0"
+           Width="140"
+           MaximumLength="40"
+           CompressionQuality="None"
+           XPosition="44"
+           YPosition="41"
+           DatabaseItem="true"
+           Bevel="Lowered"
+           CanvasName="FZVAGNT_1_CANVAS"
+           KeyboardNavigable="true"
+           Height="14"
+           Hint="Enter value for : FWBAGNT_CONTROL_AGENT1"
+           ShowHorizontalScrollbar="false"
+           ItemType="Text Item"
+           DataType="Char"
+           UpdateAllowed="true"
+           DirtyInfo="true"
+           VisualAttributeName="G$_NVA_TEXT_ITEM"
+           Label="Control Agent 1"
+           QueryAllowed="true"
+           Visible="true"
+           QueryLength="40"
+           ShowVerticalScrollbar="false"/>
          <Item Name="FWBAGNT_CONTROL_AGENT2" Enabled="true" DistanceBetweenRecords="0" Width="140" MaximumLength="40" CompressionQuality="None" XPosition="185" YPosition="41" DatabaseItem="true" Bevel="Lowered" CanvasName="FZVAGNT_1_CANVAS" KeyboardNavigable="true" Height="14" Hint="Enter value for : FWBAGNT_CONTROL_AGENT2" ShowHorizontalScrollbar="false" ItemType="Text Item" DataType="Char" UpdateAllowed="true" DirtyInfo="true" VisualAttributeName="G$_NVA_TEXT_ITEM" Label="Control Agent 2" QueryAllowed="true" Visible="true" QueryLength="40" ShowVerticalScrollbar="false"/>
          <Item Name="FWBAGNT_CONTROL_AGENT3" Enabled="true" DistanceBetweenRecords="0" Width="140" MaximumLength="40" CompressionQuality="None" XPosition="326" YPosition="41" DatabaseItem="true" Bevel="Lowered" CanvasName="FZVAGNT_1_CANVAS" KeyboardNavigable="true" Height="14" Hint="Enter value for : FWBAGNT_CONTROL_AGENT3" ShowHorizontalScrollbar="false" ItemType="Text Item" DataType="Char" UpdateAllowed="true" DirtyInfo="true" VisualAttributeName="G$_NVA_TEXT_ITEM" Label="Control Agent 3" QueryAllowed="true" Visible="true" QueryLength="40" ShowVerticalScrollbar="false"/>
       </Block>

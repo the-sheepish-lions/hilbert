@@ -8,7 +8,6 @@ def deps     = []
 
 def processNode
 processNode = { node ->
-  //println node.name()
   if (node.name() == 'Trigger') {
     println "Trigger: " + node.@Name
   }

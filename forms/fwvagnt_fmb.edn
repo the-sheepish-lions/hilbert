@@ -1,0 +1,42 @@
+; TODO: How do we add validation rules, data type information?
+; TODO: add more meaningful help messages
+{:form/name "FWVAGNT",
+ :form/controls
+  [{:control/type :control.type/table,
+    :control.datasource/name "FWBAGNT"
+    :control.datasource/type :datasource.type/database-table
+    :control.table/page-size 40
+    :control.table/insert-records? true ; can insert records
+    :control.table/remove-records? true
+    :control.table/columns
+      [
+       {:control.field/name "FWBAGNT_ORGN_CODE"
+        :control.field/required? true
+        :control.field/readonly? false
+        :control.field/spec string?
+        :control.field/help "Enter Origin Code"
+        :control.field/label "Orgn"}
+
+       {:control.field/name "FWBAGNT_CONTROL_AGENT1"
+        :control.field/required? true
+        :control.field/readonly? false
+        :control.field/spec string?
+        :control.field/help "Enter Control Agent 1"
+        :control.field/label "Control Agent 1"}
+
+       {:control.field/name "FWBAGNT_CONTROL_AGENT2"
+        :control.field/required? true
+        :control.field/readonly? false
+        :control.field/spec string?
+        :control.field/help "Enter Control Agent 2"
+        :control.field/label "Control Agent 2"}
+
+       {:control.field/name "FWBAGNT_CONTROL_AGENT3"
+        :control.field/required? true
+        :control.field/readonly? false
+        :control.field/spec string?
+        :control.field/help "Enter Control Agent 3"
+        :control.field/label "Control Agent 3"}
+       ]
+  }]
+}
