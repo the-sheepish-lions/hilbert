@@ -5,11 +5,11 @@
                   [org.clojure/java.jdbc "0.7.3"]
                   [org.clojure/tools.reader "1.0.5"]
                   [com.oracle/ojdbc7 "12.1.0.1"]
+                  [honeysql "0.9.1"]
                   [compojure "1.6.0"]
                   [hiccup "1.0.5"]])
 
 (task-options!
-  with-cp {:file "resources/ojdbc7.jar"}
   aot {:all true}
   jar {:file "hilbert.jar"
        :main 'hilbert.service})
