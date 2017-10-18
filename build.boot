@@ -14,6 +14,12 @@
        :main 'hilbert.service})
 
 (deftask build
-  "Build a hilbert jar file"
+  "Build hilbert locally as a JAR."
   []
   (comp (with-cp) (aot) (uber) (jar) (target)))
+
+(deftask run
+  "Run the project."
+  [a args ARG [str]]
+  (require '[hilbert.compiler :as app])
+  (apply (resolve 'app/-main) args))
