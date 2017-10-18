@@ -24,8 +24,3 @@
   [a args ARG [str]]
   (require '[hilbert.compiler :as app])
   (apply (resolve 'app/-main) args))
-
-(deftask project-repl
-  "Load repl with custom classpath."
-  []
-  (comp (with-cp) (repl)))
