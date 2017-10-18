@@ -1,8 +1,6 @@
 (ns hilbert.data
-  (:use '[clojure.java.jdbc]))
+  (:use [clojure.java.jdbc])
+  (:require [clojure.tools.reader.edn :as edn]))
 
-(def db {:classname "oracle.jdbc.OracleDriver"
-         :subprotocol "oracle"
-         :subname "thin:@//oradev.admin.ad.cnm.edu/spc1.admin.ad.cnm.edu"
-         :user "***REMOVED***"
-         :password "***REMOVED***"})
+(def db (:development (edn/read-string (slurp "resources/database.edn"))))
+(prn (query db ["SELECT FWBAGNT_ORGN_CODE FROM FWBAGNT"]))

@@ -1,0 +1,6 @@
+{:development
+ {:classname "oracle.jdbc.OracleDriver"
+  :subprotocol "oracle"
+  :subname "thin:@//"
+  :user "someuser"
+  :password "****"}}
