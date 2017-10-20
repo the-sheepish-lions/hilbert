@@ -4,45 +4,10 @@
               [hilbert.data :as data])
     (:use (hiccup.core)))
 
-(def form1
-  {:form/name "FWVAGNT",
-   :form/controls
-    [{:control/type :control.type/table,
-      :control.datasource/name "FWBAGNT"
-      :control.datasource/type :datasource.type/database-table
-      :control.table/page-size 40
-      :control.table/insert-records? true ; can insert records
-      :control.table/remove-records? true
-      :control.table/columns
-        [{:control.field/name "FWBAGNT_ORGN_CODE"
-          :control.field/required? true
-          :control.field/readonly? false
-          :control.field/spec string?
-          :control.field/help "Enter Origin Code"
-          :control.field/label "Orgn"}
-         {:control.field/name "FWBAGNT_CONTROL_AGENT1"
-          :control.field/required? true
-          :control.field/readonly? false
-          :control.field/spec string?
-          :control.field/help "Enter Control Agent 1"
-          :control.field/label "Control Agent 1"}
-         {:control.field/name "FWBAGNT_CONTROL_AGENT2"
-          :control.field/required? true
-          :control.field/readonly? false
-          :control.field/spec string?
-          :control.field/help "Enter Control Agent 2"
-          :control.field/label "Control Agent 2"}
-         {:control.field/name "FWBAGNT_CONTROL_AGENT3"
-          :control.field/required? true
-          :control.field/readonly? false
-          :control.field/spec string?
-          :control.field/help "Enter Control Agent 3"
-          :control.field/label "Control Agent 3"}]}]})
-
 (defn control? [x]
   (and (map? x) (:control/type x)))
 
-(defn data-from-database-table? [ctrl]
+(defn control-data-from-database-table? [ctrl]
   (let [type (:control.datasource/type ctrl)]
     (= type :datasource.type/database-table)))
 
@@ -50,8 +15,8 @@
   (map keyword (map :control.field/name (ctrl :control.table/columns))))
 
 (defn control-data
-  [ctrl]
-  (if (data-from-database-table? ctrl)
+  [ctrl params]
+  (if (control-data-from-database-table? ctrl)
     (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl))
     (throw (Exception. "Unknown datasource"))))
 
@@ -59,13 +24,13 @@
   [ctrl]
   (let [cols (:control.table/columns ctrl)
         labels (map :control.field/label cols)
-        records (control-data ctrl)]
-    [:table
+        records (control-data ctrl {})]
+    [:table {:class "table table-hover"}
      [:thead
       (map #(vector :th %) labels)]
      [:tbody
       (for [r records]
-        [:tr (map #(vector :td (second %)) r)])]]))
+        [:tr (map #(vector :td [:input {:type "input" :value (second %)}]) r)])]]))
 
 (def
   ^{:private true
@@ -94,7 +59,9 @@
 (defn compile-form
   "Compile form spec into a Hiccup template."
   [form]
-  [:div {:class "form" :data-name (:form/name form)}
+  [:div {:class "form" :style "padding-top: 20px" :data-name (:form/name form)}
+    [:h1 (:form/name form)]
+    [:div {:id "alerts" :style "min-height: 50px"} "&nbsp;"]
     (map compile-control (:form/controls form))])
 
 (defn compile-string [s]

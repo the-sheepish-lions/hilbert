@@ -2,3 +2,4 @@ target/
 .nrepl-history
 resources/database.edn
 .git.bfg-report/
+.nrepl-port

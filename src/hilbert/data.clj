@@ -6,6 +6,12 @@
 (def db (:development (edn/read-string (slurp "resources/database.edn"))))
 
 (defn projection
-  [table fields]
-  (let [sql (sql/format {:select fields :from [table]})]
+  [table fields params]
+  (let [{:keys [page page-size]} params
+        sql (sql/format
+              {:select fields
+               :from [table]
+               :offset (* page page-size)
+               :limit page-size})]
+    (prn sql)
     (query db sql)))

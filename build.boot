@@ -7,7 +7,10 @@
                   [com.oracle/ojdbc7 "12.1.0.1"]
                   [honeysql "0.9.1"]
                   [compojure "1.6.0"]
-                  [hiccup "1.0.5"]])
+                  [hiccup "1.0.5"]
+                  [pandeiro/boot-http "0.8.3"]])
+
+;(require '[panderio.boot-http :refer :all])
 
 (task-options!
   aot {:all true}
