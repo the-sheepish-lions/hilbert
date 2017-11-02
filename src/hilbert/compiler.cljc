@@ -30,7 +30,22 @@
       (map #(vector :th %) labels)]
      [:tbody
       (for [r records]
-        [:tr (map #(vector :td [:input {:type "input" :value (second %)}]) r)])]]))
+        [:tr
+         (for [field r]
+           (let [nm    (-> (field 0) name .toUpperCase)
+                 data  (->> cols (filter #(= (:control.field/name %) nm)) first)
+                 ro?   (if data (:control.field/readonly? data))
+                 width (if data (:control.field/width data))
+                 help  (if data (:control.field/help data))]
+             [:td {:class (field 0) :title help}
+              (if ro?
+                (field 1)
+                [:input
+                 {:placeholder help
+                  :style (if width (str "width: " width))
+                  :type "input"
+                  :value (field 1)
+                  :class (field 0)}])]))])]]))
 
 (def
   ^{:private true

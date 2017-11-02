@@ -12,28 +12,27 @@
       [
        {:control.field/name "FWBAGNT_ORGN_CODE"
         :control.field/required? true
-        :control.field/readonly? false
+        :control.field/readonly? true
+        :control.field/sort-by? true
+        :control.field/width "80px"
         :control.field/spec string?
-        :control.field/help "Enter Origin Code"
+        :control.field/help "Origin Code"
         :control.field/label "Orgn"}
 
        {:control.field/name "FWBAGNT_CONTROL_AGENT1"
         :control.field/required? true
-        :control.field/readonly? false
         :control.field/spec string?
         :control.field/help "Enter Control Agent 1"
         :control.field/label "Control Agent 1"}
 
        {:control.field/name "FWBAGNT_CONTROL_AGENT2"
         :control.field/required? true
-        :control.field/readonly? false
         :control.field/spec string?
         :control.field/help "Enter Control Agent 2"
         :control.field/label "Control Agent 2"}
 
        {:control.field/name "FWBAGNT_CONTROL_AGENT3"
         :control.field/required? true
-        :control.field/readonly? false
         :control.field/spec string?
         :control.field/help "Enter Control Agent 3"
         :control.field/label "Control Agent 3"}
