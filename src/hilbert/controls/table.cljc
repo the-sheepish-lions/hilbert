@@ -1,12 +1,18 @@
 (ns hilbert.controls.table
   (:use (hilbert.compiler)))
 
-(defn compile-table-control
-  [ctrl]
+(defn table-control
+  "A control for rendering tabular data"
+  [ctrl params]
   (let [cols    (:control.table/columns ctrl)
         labels  (map :control.field/label cols)
         sorter  (:control.table/sort-by ctrl)
-        records (hilbert.compiler/control-data ctrl {:order-by sorter})]
+        psize   (:control.table/page-size ctrl)
+        params* {:page      (get params :page 1)
+                 :page-size (get params :page-size psize)
+                 :sort-by   (get params :sort-by sorter)}
+        records (hilbert.compiler/control-data ctrl params*)]
+    (prn :params params params*)
     [:table {:class "table table-hover"}
      [:thead
       (map #(vector :th %) labels)]
@@ -29,4 +35,4 @@
                   :value (field 1)
                   :class (field 0)}])]))])]]))
 
-(hilbert.compiler/register-control-type :control.type/table compile-table-control)
+(hilbert.compiler/register-control-type :control.type/table table-control)

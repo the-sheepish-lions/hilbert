@@ -44,6 +44,11 @@
   []
   (comp (with-cp) (aot) (uber) (jar) (target)))
 
+(deftask build-client
+  "Build client-side runtime"
+  []
+  (cljs))
+
 (deftask run
   "Run the project."
   [a args ARG [str]]

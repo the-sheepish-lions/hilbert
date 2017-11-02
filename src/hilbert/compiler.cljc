@@ -36,9 +36,11 @@
 
 ; disptach on type
 (defn compile-control
-  [x]
+  [x & args]
   (if-let [ctrl (@*control-types* (:control/type x))]
-    (ctrl x)
+    (do
+      (prn args)
+    (apply ctrl (cons x args)))
     (throw (Exception. (str "invalid control type: " (:control/type x))))))
 
 (defn form? [x]
@@ -46,11 +48,13 @@
 
 (defn compile-form
   "Compile form spec into a Hiccup template."
-  [form]
+  [form params]
   [:div {:class "form" :style "padding-top: 20px" :data-name (:form/name form)}
-    [:h1 (:form/name form)]
+   (if (:form/title form)
+    [:h1 (:form/title form)])
     [:div {:id "alerts" :style "min-height: 50px"} "&nbsp;"]
-    (map compile-control (:form/controls form))])
+    (for [ctrl (:form/controls form)]
+      (compile-control ctrl params))])
 
 (defn compile-string [s]
   (compile (edn/read-string s)))

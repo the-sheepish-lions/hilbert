@@ -20,7 +20,23 @@
     (.toString out)))
 
 (defn query-params [s]
-  (into {} (map #(vec (s/split % #"\=")) (s/split s #"\&"))))
+  (if (nil? s)
+    {}
+    (into {} (map #(vec (s/split % #"\=")) (s/split s #"\&")))))
+
+(defn form-params [params]
+  (let [params* (query-params (params :query-string))
+        p       (get params* "p")
+        psize   (get params* "psize")
+        order   (get params* "sort-by")
+        proto   (atom {})]
+    (if-not (or (nil? p) (empty? p))
+      (swap! proto assoc :page (Integer/parseInt p)))
+    (if-not (or (nil? psize) (empty? psize))
+      (swap! proto assoc proto :page-size (Integer/parseInt psize)))
+    (if-not (or (nil? order) (empty? order))
+      (swap! proto assoc proto :sort-by order))
+    @proto))
 
 (defn layout
   [body]
@@ -36,8 +52,8 @@
      body]]])
 
 (defroutes service
-  (GET "/form/:form" [form]
-       (html (layout (compile-form (form-file form)))))
+  (GET "/form/:form" [form :as params]
+       (html (layout (compile-form (form-file form) (form-params params)))))
   (GET "/template/:form" [form]
        (transit-data (compile-form (form-file form))))
   (GET "/data/:source" [source :as {q :query-string}]

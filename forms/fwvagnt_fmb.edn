@@ -1,11 +1,12 @@
 ; TODO: How do we add validation rules, data type information?
 ; TODO: add more meaningful help messages
-{:form/name "FWVAGNT",
+{:form/name :fwvagnt,
+ :form/title "FWVAGNT"
  :form/controls
   [{:control/type :control.type/table,
     :control.datasource/name :fwbagnt
     :control.datasource/type :datasource.type/database-table
-    :control.table/page-size 40
+    :control.table/page-size 10
     ; TODO: this may be better implemented as part of the permissions system
     :control.table/insert-records? true ; can insert records
     :control.table/remove-records? true
