@@ -3,39 +3,39 @@
 {:form/name "FWVAGNT",
  :form/controls
   [{:control/type :control.type/table,
-    :control.datasource/name "FWBAGNT"
+    :control.datasource/name :fwbagnt
     :control.datasource/type :datasource.type/database-table
     :control.table/page-size 40
+    ; TODO: this may be better implemented as part of the permissions system
     :control.table/insert-records? true ; can insert records
     :control.table/remove-records? true
+    :control.table/sort-by :fwbagnt_orgn_code
     :control.table/columns
-      [
-       {:control.field/name "FWBAGNT_ORGN_CODE"
+      [{:control.field/name :fwbagnt_orgn_code
         :control.field/required? true
-        :control.field/readonly? true
-        :control.field/sort-by? true
+        :control.field/read-only? true
+        :control.field/sortable? true
         :control.field/width "80px"
-        :control.field/spec string?
+        :control.field/validate-by string?
         :control.field/help "Origin Code"
         :control.field/label "Orgn"}
 
-       {:control.field/name "FWBAGNT_CONTROL_AGENT1"
+       {:control.field/name :fwbagnt_control_agent1
         :control.field/required? true
-        :control.field/spec string?
+        :control.field/validate-by string?
         :control.field/help "Enter Control Agent 1"
         :control.field/label "Control Agent 1"}
 
-       {:control.field/name "FWBAGNT_CONTROL_AGENT2"
+       {:control.field/name :fwbagnt_control_agent2
         :control.field/required? true
-        :control.field/spec string?
+        :control.field/validate-by string?
         :control.field/help "Enter Control Agent 2"
         :control.field/label "Control Agent 2"}
 
-       {:control.field/name "FWBAGNT_CONTROL_AGENT3"
+       {:control.field/name :fwbagnt_control_agent3
         :control.field/required? true
-        :control.field/spec string?
+        :control.field/validate-by string?
         :control.field/help "Enter Control Agent 3"
-        :control.field/label "Control Agent 3"}
-       ]
+        :control.field/label "Control Agent 3"}]
   }]
 }

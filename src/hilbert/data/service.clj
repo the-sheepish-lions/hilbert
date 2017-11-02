@@ -7,10 +7,11 @@
 
 (defn projection
   [table fields params]
-  (let [{:keys [page page-size]} params
-        sql (sql/format
-              {:select fields
-               :from [table]})]
+  (let [{:keys [page page-size order-by]} params
+        smap {:select fields :from [table]}
+        smap* (if order-by (assoc smap :order-by [order-by]) smap)
+        sql (sql/format smap*)]
                ;:offset (* page page-size)
                ;:limit page-size})]
+    (prn smap* sql)
     (query db sql)))

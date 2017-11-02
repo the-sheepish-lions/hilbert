@@ -1,7 +1,7 @@
 (ns hilbert.compiler
     (:gen-class)
     (:require [clojure.tools.reader.edn :as edn]
-              [hilbert.data :as data])
+              [hilbert.data.service :as data])
     (:use (hiccup.core)))
 
 (defn control? [x]
@@ -17,35 +17,8 @@
 (defn control-data
   [ctrl params]
   (if (control-data-from-database-table? ctrl)
-    (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl) {})
+    (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl) params)
     (throw (Exception. "Unknown datasource"))))
-
-(defn compile-table-control
-  [ctrl]
-  (let [cols (:control.table/columns ctrl)
-        labels (map :control.field/label cols)
-        records (control-data ctrl {})]
-    [:table {:class "table table-hover"}
-     [:thead
-      (map #(vector :th %) labels)]
-     [:tbody
-      (for [r records]
-        [:tr
-         (for [field r]
-           (let [nm    (-> (field 0) name .toUpperCase)
-                 data  (->> cols (filter #(= (:control.field/name %) nm)) first)
-                 ro?   (if data (:control.field/readonly? data))
-                 width (if data (:control.field/width data))
-                 help  (if data (:control.field/help data))]
-             [:td {:class (field 0) :title help}
-              (if ro?
-                (field 1)
-                [:input
-                 {:placeholder help
-                  :style (if width (str "width: " width))
-                  :type "input"
-                  :value (field 1)
-                  :class (field 0)}])]))])]]))
 
 (def
   ^{:private true
@@ -53,18 +26,18 @@
     :doc "Dispatch table for control types, maps a keyword to a control compiler
          (a function that takes control map and generates Hiccup data to be compiled into HTML)."}
   *control-types*
-  {:control.type/table compile-table-control})
+  (atom {}))
 
 (defn register-control-type
   "Register control type with a function that serves as a control compiler
   e.g. (register-control-type :control.type/greet (fn [ctl] \"Hello\"))"
   [k f]
-  (set! *control-types* (assoc *control-types* k f)))
+  (swap! *control-types* assoc k f))
 
 ; disptach on type
 (defn compile-control
   [x]
-  (if-let [ctrl (*control-types* (:control/type x))]
+  (if-let [ctrl (@*control-types* (:control/type x))]
     (ctrl x)
     (throw (Exception. (str "invalid control type: " (:control/type x))))))
 

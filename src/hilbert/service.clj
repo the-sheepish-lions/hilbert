@@ -1,12 +1,14 @@
 (ns hilbert.service
   (:use [hiccup.core]
         [hilbert.compiler]
-        [hilbert.data])
+        [hilbert.data.service])
   (:require [clojure.tools.reader.edn :as edn]
             [clojure.string :as s]
             [cognitect.transit :as transit]
             [compojure.core :refer :all]
             [compojure.route :as route]))
+
+(load "controls/table")
 
 (defn form-file [form]
   (edn/read-string (slurp (str "forms/" form "_fmb.edn"))))
