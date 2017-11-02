@@ -17,7 +17,7 @@
 (defn control-data
   [ctrl params]
   (if (control-data-from-database-table? ctrl)
-    (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl))
+    (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl) {})
     (throw (Exception. "Unknown datasource"))))
 
 (defn compile-table-control

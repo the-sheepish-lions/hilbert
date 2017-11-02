@@ -10,8 +10,7 @@
   (let [{:keys [page page-size]} params
         sql (sql/format
               {:select fields
-               :from [table]
-               :offset (* page page-size)
-               :limit page-size})]
-    (prn sql)
+               :from [table]})]
+               ;:offset (* page page-size)
+               ;:limit page-size})]
     (query db sql)))
