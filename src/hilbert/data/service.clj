@@ -1,4 +1,4 @@
-(ns hilbert.data
+(ns hilbert.data.service
   (:use [clojure.java.jdbc])
   (:require [clojure.tools.reader.edn :as edn]
             [honeysql.core :as sql]))
