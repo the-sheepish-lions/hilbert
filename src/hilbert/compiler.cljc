@@ -58,6 +58,3 @@
 
 (defn compile-string [s]
   (compile (edn/read-string s)))
-
-(defn -main [file]
-  (prn (compile-form (load-file file))))

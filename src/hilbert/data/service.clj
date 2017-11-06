@@ -18,12 +18,12 @@
 ;       FROM (SELECT * FROM FWBAGNT ORDER BY FWBAGNT_ORGN_CODE) a WHERE ROWNUM <=  end)
 ; WHERE rnum >= start;
 
-(defn start [page page-size]
+(defn- start [page page-size]
   (if (= 1 page)
     1
     (inc (* (dec page) page-size))))
 
-(defn end [page page-size]
+(defn- end [page page-size]
   (dec (+ (start page page-size) page-size)))
 
 (defn projection
@@ -42,3 +42,29 @@
         sql   (sql/format smap {:start (start p psize) :end (end p psize)})]
     (prn :projection-post params smap sql)
     (query db sql)))
+
+(defn- eval-pred-map
+  [preds]
+  (cons :and (map #(vector := (%1 0) (%1 1)) preds)))
+
+(defn insert
+  [table values]
+  (let [smap {:insert-into table :values values}
+        sql  (sql/format smap)]
+    (prn :insert smap sql)
+    (execute! db sql)))
+
+(defn update
+  [table data & preds]
+  (let [smap  {:update table :set data}
+        smap* (if-let [p (first preds)] (assoc smap :where (eval-pred-map p)) smap)
+        sql   (sql/format smap*)]
+    (prn :update smap* sql)
+    (execute! db sql)))
+
+(defn delete
+  [table preds]
+  (let [smap {:delete-from table :where (eval-pred-map preds)}
+        sql  (sql/format smap)]
+    (prn :delete smap sql)
+    (execute! db sql)))
