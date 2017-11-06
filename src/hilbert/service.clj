@@ -57,7 +57,8 @@
     [:title "CNM Forms"]]
    [:body
     [:div {:class "container" :id "main"}
-     body]]])
+     body]
+    [:script {:type "text/javascript" :src "/js/main.js"}]]])
 
 (defroutes service
   ;; forms service
@@ -95,7 +96,7 @@
               preds (body :where)
               res   (delete (keyword source) preds)]
           (transit-data {:delete source :where preds})))
-  (route/files "/assets" {:root "resources/public"})
+  (route/resources "/")
   (route/not-found (html [:h1 "Page not found"])))
 
 (defn -main [& args]

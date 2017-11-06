@@ -47,10 +47,10 @@
 (deftask build-client
   "Build client-side runtime"
   []
-  (cljs))
+  (cljs) (target))
 
 (deftask run
   "Run the project."
   [a args ARG [str]]
-  (require '[hilbert.compiler :as app])
+  (require '[hilbert.service :as app])
   (apply (resolve 'app/-main) args))

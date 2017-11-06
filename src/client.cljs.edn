@@ -1,3 +1,0 @@
-{:require [hilbert.client]
- :init-fns [hilbert.client/main]
- :compiler-options {:output-to "resources/public/js/main.js"}}

@@ -3,3 +3,5 @@ target/
 resources/database.edn
 .git.bfg-report/
 .nrepl-port
+resources/public/js/main.js
+resources/public/js/out/
