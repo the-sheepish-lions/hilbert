@@ -1,8 +1,7 @@
-(ns hilbert.client)
+(ns hilbert.client
+  (:require [hilbert.data.client :as c]))
 
 (defn main []
-  (let [c (.. js/document (createElement "DIV"))]
-    (aset c "innerHTML" "<p>This is a test</p>")
-    (.. js/document (getElementById "main") (appendChild c))))
+  (.log js/console (c/projection :fwbagnt '(fwbagnt) {})))
 
 (main)
