@@ -26,25 +26,9 @@
         r  (transit/reader in :json)]
     (transit/read r)))
 
-;; TODO: running service with site handler obviates this
-(defn query-params [s]
-  (if (nil? s)
-    {}
-    (into {} (map #(vec (s/split % #"\=")) (s/split s #"\&")))))
-
-(defn form-params [params]
-  (let [params* (query-params (params :query-string))
-        p       (get params* "p")
-        psize   (get params* "psize")
-        order   (get params* "sort-by")
-        proto   (atom {})]
-    (if-not (or (nil? p) (empty? p))
-      (swap! proto assoc :page (Integer/parseInt p)))
-    (if-not (or (nil? psize) (empty? psize))
-      (swap! proto assoc proto :page-size (Integer/parseInt psize)))
-    (if-not (or (nil? order) (empty? order))
-      (swap! proto assoc proto :sort-by order))
-    @proto))
+(defn nil-or-empty?
+  [x]
+  (or (nil? x) (empty? x)))
 
 (defn layout
   [body]
@@ -62,21 +46,23 @@
 
 (defroutes service
   ;; forms service
-  (GET "/form/:form" [form :as params]
-       (html (layout (compile-form (form-file form) (form-params params)))))
+  (GET "/form/:form" [form :as {params :params}]
+       (html (layout (compile-form (form-file form) params))))
 
   ;; template service
   (GET "/template/:form" [form]
        (transit-data (compile-form (form-file form))))
 
   ;; data service
-  ;; TODO: added more error checking
+  ;; TODO: add better error checking
+
   ; projection
-  (GET "/data/:source" [source :as {q :query-string}]
-       (let [params (query-params q)
-             fields (vec (map keyword (s/split (params "fields") #"\,")))
-             pro (projection (keyword source) fields {})]
-         (transit-data pro)))
+  (GET "/data/:source" [source :as {params :params}]
+       (let [fields (if (nil-or-empty? (params :fields))
+                      []
+                      (vec (map keyword (s/split (params :fields)  #"\,"))))
+             proj   (projection (keyword source) fields params)]
+         (transit-data proj)))
   ; insert
   (POST "/data/:source" [source :as req]
         (let [body (read-transit (slurp (req :body)))
@@ -96,6 +82,7 @@
               preds (body :where)
               res   (delete (keyword source) preds)]
           (transit-data {:delete source :where preds})))
+
   (route/resources "/")
   (route/not-found (html [:h1 "Page not found"])))
 
