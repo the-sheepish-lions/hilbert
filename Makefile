@@ -4,7 +4,7 @@ MY_ORACLE_HOME=$(HOME)/Oracle/Middleware/Oracle_Home
 #MY_JAVA_HOME=$(MY_ORACLE_HOME)/oracle_common_jdk
 FORM2XML=$(MY_ORACLE_HOME)/forms/templates/scripts/frmf2xml.sh
 
-CP=$(shell lein classpath)
+CP=$(shell scripts/lein classpath)
 CLJ=java -cp 'resources/cljs.jar:$(CP):src'
 
 deps:
@@ -20,6 +20,9 @@ build-client: resources/public/js/main.js
 
 repl:
 	$(CLJ) clojure.main
+
+client-repl:
+	$(CLJ) clojure.main scripts/client-repl.clj
 
 server:
 	$(CLJ) clojure.main -m hilbert.service

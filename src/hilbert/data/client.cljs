@@ -9,7 +9,7 @@
   ^{:doc "Channel for communicating with the back-end"}
   service-chan (chan))
 
-(defn
+(def
   ^{:doc "Channel for receiving projections from the back-end"}
   projection-chan (chan))
 
