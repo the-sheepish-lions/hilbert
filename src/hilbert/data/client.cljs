@@ -20,6 +20,11 @@
      :uri (str "/data/" table "?fields=" (join "," fields))
      :handler #(go (>! projection-chan %))}))
 
+; CRUD
+(defn process-insert-request [req])
+(defn process-update-request [req])
+(defn process-delete-request [req])
+
 (defn process-request
   "Facilitates data service request dispatch. Requests are vectors of the form:
     

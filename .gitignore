@@ -5,3 +5,4 @@ resources/database.edn
 .nrepl-port
 resources/public/js/main.js
 resources/public/js/out/
+.repl-1.9.946/
