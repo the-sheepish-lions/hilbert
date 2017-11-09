@@ -8,7 +8,7 @@ CP=$(shell lein classpath)
 CLJ=java -cp 'resources/cljs.jar:$(CP):src'
 
 deps:
-	lein deps
+	scripts/lein deps
 
 resources/public/js/main.js:
 	$(CLJ) clojure.main scripts/build-client.clj
