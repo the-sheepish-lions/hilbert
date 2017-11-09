@@ -7,9 +7,6 @@ FORM2XML=$(MY_ORACLE_HOME)/forms/templates/scripts/frmf2xml.sh
 CP=$(shell lein classpath)
 CLJ=java -cp 'resources/cljs.jar:$(CP):src'
 
-target:
-	boot cljs target
-
 deps:
 	lein deps
 
@@ -19,8 +16,7 @@ resources/public/js/main.js:
 autobuild-client:
 	$(CLJ) clojure.main scripts/autobuild-client.clj
 
-build-client:
-	$(CLJ) clojure.main scripts/build-client.clj
+build-client: resources/public/js/main.js
 
 repl:
 	$(CLJ) clojure.main
