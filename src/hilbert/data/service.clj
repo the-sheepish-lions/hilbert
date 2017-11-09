@@ -39,9 +39,14 @@
                                 :order-by [order]} :a]]
                        :where [:<= :ROWNUM (sql/param :end)]}]
                :where [:>= :rnum (sql/param :start)]}
-        sql   (sql/format smap {:start (start p psize) :end (end p psize)})]
+        sql   (sql/format smap {:start (start p psize) :end (end p psize)})
+        csql  (sql/format {:select [:%count.*] :from [table]})]
     (prn :projection-post params smap sql)
-    (query db sql)))
+    {:table  table
+     :fields fields
+     :params params
+     :count  ((first (query db csql)) (keyword "count(*)"))
+     :data   (query db sql)}))
 
 (defn- eval-pred-map
   [preds]

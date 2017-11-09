@@ -15,8 +15,11 @@ resources/public/js/main.js:
 	$(CLJ) clojure.main scripts/build-client.clj
 
 .PHONY: dev-client
-dev-client:
+autobuild-client:
 	$(CLJ) clojure.main scripts/autobuild-client.clj
+
+build-client:
+	$(CLJ) clojure.main scripts/build-client.clj
 
 repl:
 	$(CLJ) clojure.main

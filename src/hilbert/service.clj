@@ -100,5 +100,4 @@
   (route/not-found (html [:h1 "Page not found"])))
 
 (defn -main [& args]
-  ;(println "Hello"))
   (run-jetty (handler/site service) {:port 3000}))

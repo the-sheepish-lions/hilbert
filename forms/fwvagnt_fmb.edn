@@ -14,7 +14,7 @@
     :control.table/columns
       [{:control.field/name :fwbagnt_orgn_code
         :control.field/required? true
-        :control.field/read-only? true
+        :control.field/read-only? false
         :control.field/sortable? true
         :control.field/width "80px"
         :control.field/validate-by string?
