@@ -3,7 +3,7 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require
     [clojure.core.async :as async :refer [<! >! chan]] 
-    [ajax.core :refer [ajax-request]]))
+    [ajax.core :refer [ajax-request transit-request-format transit-response-format]]))
 
 (def
   ^{:doc "Channel for communicating with the back-end"}
@@ -13,15 +13,59 @@
   ^{:doc "Channel for receiving projections from the back-end"}
   projection-chan (chan))
 
-(defn process-projection-request
-  [[form table fields params]]
-  (ajax-request
-    {:method :get
-     :uri (str "/data/" table "?fields=" (join "," fields))
-     :handler #(go (>! projection-chan %))}))
+(def
+  ^{:doc "Channel for receiving projections from the back-end"}
+  alerts-chan (chan))
+
+(defn query-string
+  [params]
+  (->> params
+       (map #(str (name (% 0)) "="  (% 1)))
+       (join "&")
+       (str "?")))
+
+(defn debug-handler
+  [[ok response]]
+  (if ok
+    (prn response)
+    (.error js/console (prn-str response)))
+  [ok response])
+
+(defn projection-handler
+  [[ok response]]
+  (if ok
+    (go (>! projection-chan response))
+    (go (>! alerts-chan [:error (str response)]))))
 
 ; CRUD
-(defn process-insert-request [req])
+(defn process-projection-request
+  [[tag table fields params]]
+  (prn fields)
+  (let [uri (str "/data/"
+                 (name table)
+                 (query-string
+                   (assoc params :fields (->> fields (map name) (join ",")))))] 
+    (prn uri)
+    (ajax-request
+      {:method :get
+       :uri uri
+       :handler projection-handler
+       :format (transit-request-format)
+       :response-format (transit-response-format {:keyword? true})})))
+
+(defn process-insert-request
+  [[tag table values]]
+  (prn fields)
+  (let [uri (str "/data/" (name table))]
+    (prn uri)
+    (ajax-request
+      {:method :post
+       :uri uri
+       :params {:values values}
+       :handler debug-handler
+       :format (transit-request-format)
+       :response-format (transit-response-format {:keyword? true})})))
+
 (defn process-update-request [req])
 (defn process-delete-request [req])
 
@@ -41,10 +85,18 @@
     :else
       (throw (js/Error. (str "Invalid request: " (pr-str req))))))
 
-(go (process-request (<! serice-chan)))
+; process service requests
+(go
+  (while true
+    (let [req (<! service-chan)]
+      (prn :request req)
+      (if (nil? req)
+        (println "Service Channel is closed")
+        (process-request req)))))
 
 (defn projection
   [table fields params]
   (go
     (>! service-chan [:project table fields params])
-    (<! projection-chan)))
+    (println "Passed projection")
+    (prn (<! projection-chan))))

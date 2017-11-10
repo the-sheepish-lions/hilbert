@@ -1,5 +1,5 @@
 (ns hilbert.controls.table
-  (:use (hilbert.compiler)))
+  (:use [hilbert.compiler] [hilbert.util]))
 
 (defn table-control
   "A control for rendering tabular data"
@@ -8,16 +8,19 @@
         labels  (map :control.field/label cols)
         sorter  (:control.table/sort-by ctrl)
         psize   (:control.table/page-size ctrl)
-        params* {:page      (get params :page 1)
-                 :page-size (get params :page-size psize)
-                 :sort-by   (get params :sort-by sorter)}
+        page    (string->int (get params :page 1))
+        params* {:page      page
+                 :page-size (string->int (get params :page-size psize))
+                 :sort-by   (string->keyword (get params :sort-by sorter))}
         proj    (hilbert.compiler/control-data ctrl params*)
-        pcount  (Math/ceil (/ (proj :count) psize))]
-    (prn :count (proj :count))
+        pcount  (int (Math/ceil (/ (proj :count) psize)))]
     (prn :params params params*)
     [:div.table-control
      [:div.row {:style "padding-bottom: 10px"}
-      [:a.btn.btn-primary {:href "#" :onclick (str "hilbert.controls.table.ADD()")} "Add"]]
+      [:a.btn.btn-primary
+       {:href "#"
+        :title "Add Record"
+        :onclick (str "hilbert.controls.table.ADD(this)")} "Add"]]
      [:div.row
       [:table.table.table-hover
        [:thead
@@ -28,8 +31,16 @@
           [:tr {:data-id (r 0)}
            [:td
             [:div.btn-group
-             [:a.btn.btn-sm.btn-primary {:href "#" :onclick (str "hilbert.controls.table.UPDATE(" (r 0) ")")} "Update"]
-             [:a.btn.btn-sm.btn-secondary {:href "#" :onclick (str "hilbert.controls.table.DELETE(" (r 0) ")")} "Delete"]]]
+             [:a.btn.btn-sm.btn-primary
+              {:href "#"
+               :title "Update Record"
+               :onclick (str "hilbert.controls.table.UPDATE(this, " (r 0) ")")}
+              "Update"]
+             [:a.btn.btn-sm.btn-secondary
+              {:href "#"
+               :title "Delete Record"
+               :onclick (str "hilbert.controls.table.DELETE(this, " (r 0) ")")}
+              "Delete"]]]
            (for [field (r 1)]
              (let [nm    (field 0)
                    data  (->> cols (filter #(= (:control.field/name %) nm)) first)
@@ -43,6 +54,7 @@
                    {:placeholder help
                     :style (if width (str "width: " width))
                     :type "input"
+                    :name  (field 0)
                     :value (field 1)
                     :class (field 0)}])]))])]]]
       [:div.row
@@ -50,9 +62,18 @@
        [:br]
        [:nav
         [:ul.pagination
-         [:li.page-item [:a.page-link {:href "#"} "<<"]]
+         [:li.page-item
+          {:class (if (= page 1) "disabled")}
+          [:a.page-link
+           {:href (str "?page=" (if (= page 1) page (dec page)))} "&lt;&lt;"]]
          (for [p (range 1 (inc pcount))]
-           [:li.page-item [:a.page-link {:href (str "#?p=" p)} p]])
-         [:li.page-item [:a.page-link {:href "#"} ">>"]]]]]]))
+           [:li.page-item
+            {:class (if (= p page) "active")}
+            [:a.page-link
+             {:href (str "?page=" p)} p]])
+         [:li.page-item
+          {:class (if (= page pcount) "disabled")}
+          [:a.page-link
+           {:href (str "?page=" (if (= page pcount) page (inc page)))} "&gt;&gt;"]]]]]]))
 
 (hilbert.compiler/register-control-type :control.type/table table-control)

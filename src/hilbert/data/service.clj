@@ -1,5 +1,5 @@
 (ns hilbert.data.service
-  (:use [clojure.java.jdbc])
+  (:use [clojure.java.jdbc] [hilbert.util])
   (:require [clojure.tools.reader.edn :as edn]
             [honeysql.core :as sql]))
 
@@ -29,9 +29,9 @@
 (defn projection
   [table fields params]
   (prn :projection-pre params)
-  (let [p     (get params :page 1)
-        psize (get params :page-size 20)
-        order (get params :sort-by)
+  (let [p     (string->int (get params :page 1))
+        psize (string->int (get params :page-size 20))
+        order (string->keyword (get params :sort-by))
         smap  {:select fields
                :from [{:select [:a.* [:ROWNUM :rnum]]
                        :from [[{:select [:*]
@@ -45,7 +45,7 @@
     {:table  table
      :fields fields
      :params params
-     :count  ((first (query db csql)) (keyword "count(*)"))
+     :count  (int ((first (query db csql)) (keyword "count(*)")))
      :data   (query db sql)}))
 
 (defn- eval-pred-map
