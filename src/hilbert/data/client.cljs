@@ -88,15 +88,14 @@
 ; process service requests
 (go
   (while true
-    (let [req (<! service-chan)]
-      (prn :request req)
-      (if (nil? req)
-        (println "Service Channel is closed")
-        (process-request req)))))
+    (let [[v ch] (alts! [projection-chan alerts-chan service-chan])]
+      (prn :channel ch)
+      (prn :value v)
+      (condp = ch
+        service-chan (process-request v)
+        alerts-chan (.error js/console v)
+        projection-chan (.log js/console v)))))
 
-(defn projection
+(defn project!
   [table fields params]
-  (go
-    (>! service-chan [:project table fields params])
-    (println "Passed projection")
-    (prn (<! projection-chan))))
+  (go (>! service-chan [:project table fields params])))

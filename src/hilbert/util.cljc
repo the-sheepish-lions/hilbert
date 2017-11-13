@@ -3,7 +3,8 @@
 (defn string->int [x]
   (if (integer? x)
     x
-    (Integer/parseInt x)))
+    #?(:clj (Integer/parseInt x)
+       :cljs (js/parseInt x))))
 
 (defn string->keyword [x]
   (if (keyword? x)

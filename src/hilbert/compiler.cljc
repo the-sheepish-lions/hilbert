@@ -1,7 +1,10 @@
 (ns hilbert.compiler
+    #?(:cljs (:require-macros [hiccups.core :as hiccups :refer [html]]))
     (:require [clojure.tools.reader.edn :as edn]
-              [hilbert.data.service :as data])
-    (:use (hiccup.core)))
+              #?(:clj [hilbert.data.service :as data]
+                 :cljs [hilbert.data.client :as data])
+              #?(:cljs [hiccups.runtime :as hiccupsrt]))
+    (:use #?(:clj (hiccup.core))))
 
 (defn control? [x]
   (and (map? x) (:control/type x)))

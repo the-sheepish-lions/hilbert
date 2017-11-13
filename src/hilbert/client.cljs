@@ -1,6 +1,7 @@
 (ns hilbert.client
-  (:require [hilbert.data.client :as c]
-            [hilbert.controls.table :as t]))
+  (:require [hilbert.data.client :as client]
+            [hilbert.controls.table :as t]
+            [hilbert.compiler :as compiler]))
 
 (enable-console-print!)
 

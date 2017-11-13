@@ -6,3 +6,4 @@ resources/database.edn
 resources/public/js/main.js
 resources/public/js/out/
 .repl-1.9.946/
+*.sw*
