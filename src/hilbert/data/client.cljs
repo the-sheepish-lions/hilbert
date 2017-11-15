@@ -55,7 +55,7 @@
 
 (defn process-insert-request
   [[tag table values]]
-  (prn fields)
+  (prn values)
   (let [uri (str "/data/" (name table))]
     (prn uri)
     (ajax-request
@@ -66,8 +66,29 @@
        :format (transit-request-format)
        :response-format (transit-response-format {:keyword? true})})))
 
-(defn process-update-request [req])
-(defn process-delete-request [req])
+(defn process-update-request
+  [[tag table values preds]]
+  (let [uri (str "/data/" (name table))]
+    (prn uri)
+    (ajax-request
+      {:method :put
+       :uri uri
+       :params {:set values :where preds}
+       :handler debug-handler
+       :format (transit-request-format)
+       :response-format (transit-response-format {:keyword? true})})))
+
+(defn process-delete-request
+  [[tag table preds]]
+  (let [uri (str "/data/" (name table))]
+    (prn uri)
+    (ajax-request
+      {:method :delete
+       :uri uri
+       :params {:where preds}
+       :handler debug-handler
+       :format (transit-request-format)
+       :response-format (transit-response-format {:keyword? true})})))
 
 (defn process-request
   "Facilitates data service request dispatch. Requests are vectors of the form:

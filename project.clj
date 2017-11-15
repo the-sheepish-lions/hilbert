@@ -1,4 +1,4 @@
-(defproject hilbert "0.1.0-SNAPSHOT"
+(defproject edu.cnm/hilbert "0.1.0-SNAPSHOT"
   :description "A database forms system"
   :dependencies
     [[org.clojure/clojure       "1.9.0-beta2"]

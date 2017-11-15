@@ -6,6 +6,10 @@
               #?(:cljs [hiccups.runtime :as hiccupsrt]))
     (:use #?(:clj (hiccup.core))))
 
+(defn compiler-error [msg]
+  (throw #?(:clj (Exceptoion. msg)
+            :cljs (js/Error. msg))))
+
 (defn control? [x]
   (and (map? x) (:control/type x)))
 
@@ -20,7 +24,7 @@
   [ctrl params]
   (if (control-data-from-database-table? ctrl)
     (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl) params)
-    (throw (Exception. "Unknown datasource"))))
+    (compiler-error "Unknown datasource")))
 
 (def
   ^{:private true
@@ -43,7 +47,7 @@
     (do
       (prn args)
     (apply ctrl (cons x args)))
-    (throw (Exception. (str "invalid control type: " (:control/type x))))))
+    (compiler-error (str "invalid control type: " (:control/type x)))))
 
 (defn form? [x]
   (and (map? x) (:form/name x) (:form/controls x)))
@@ -59,4 +63,4 @@
       (compile-control ctrl params))])
 
 (defn compile-string [s]
-  (compile (edn/read-string s)))
+  (compile-form (edn/read-string s) {}))

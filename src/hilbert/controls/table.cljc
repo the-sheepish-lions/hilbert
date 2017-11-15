@@ -1,9 +1,63 @@
 (ns hilbert.controls.table
-  (:use [hilbert.compiler] [hilbert.util]))
+  #?(:cljs
+     (:require-macros [cljs.core.async.macros :refer [go]]
+                      [hiccups.core :as hiccups :refer [html]]))
+  (:require
+    #?(:cljs [cljs.core.async :as async :refer [>! <! put! chan alts!]])
+    #?(:cljs [goog.events :as events])
+    #?(:cljs [goog.dom.classes :as classes])
+    #?(:cljs [hiccups.runtime :as hiccupsrt])
+    #?(:cljs [hilbert.data.client :as data])
+    [hilbert.compiler :as compiler :refer [register-control-type control-data]]
+    [hilbert.util :as util :refer [string->int string->keyword]])
+  #?(:cljs (:import [goog.events EventType])))
+
+(defn by-id
+  "Shorthand for document.getElementById(id)"
+  [id]
+  (.getElementById js/document id))
+
+(defn events->chan
+  "Given a target DOM element and event type return a channel of
+  observed events. Can supply the channel to receive events as third
+  optional argument."
+  ([el event-type] (events->chan el event-type (chan)))
+  ([el event-type c]
+   (events/listen el event-type
+     (fn [e] (put! c e)))
+   c))
+
+(defn set-html!
+  "Set inner HTML of element selected by element id"
+  [id s]
+  (set! (.-innerHTML (by-id id)) s))
+
+(defn ->array
+  [x]
+  (.apply (.. js/Array -prototype -slice) x))
+
+(defn value-map
+  [rowid]
+  (let [elem (.querySelector js/document (str "tr[data-id='" rowid "']"))]
+    (into {} (map #(vector (keyword (.-name %)) (.-value %)) (->array (.querySelectorAll elem "input[type=text]"))))))
+
+(defn predicate-map
+  [rowid]
+  (let [elem (.querySelector js/document (str "tr[data-id='" rowid "']"))]
+    (into {} (map #(vector (keyword (.-name %)) (.-value %)) (->array (.querySelectorAll elem "input[type=hidden]"))))))
+
+(defn ADD [elem]
+  )
+
+(defn UPDATE [elem rowid]
+  (data/process-request [:update :fwbagnt (value-map rowid) (predicate-map rowid)]))
+
+(defn DELETE [elem rowid]
+  (data/process-request [:delete :fwbagnt (predicate-map rowid)]))
 
 (defn table-control
   "A control for rendering tabular data"
-  [ctrl params]
+  [ctrl params]; TODO [ctrl data params]
   (let [cols    (:control.table/columns ctrl)
         labels  (map :control.field/label cols)
         sorter  (:control.table/sort-by ctrl)
@@ -12,7 +66,7 @@
         params* {:page      page
                  :page-size (string->int (get params :page-size psize))
                  :sort-by   (string->keyword (get params :sort-by sorter))}
-        proj    (hilbert.compiler/control-data ctrl params*)
+        proj    (hilbert.compiler/control-data ctrl params*) ; TODO: data
         pcount  (int (Math/ceil (/ (proj :count) psize)))]
     (prn :params params params*)
     [:div.table-control
@@ -53,10 +107,14 @@
                   [:input
                    {:placeholder help
                     :style (if width (str "width: " width))
-                    :type "input"
+                    :type "text"
                     :name  (field 0)
                     :value (field 1)
-                    :class (field 0)}])]))])]]]
+                    :class (field 0)}])
+                  [:input
+                   {:type "hidden"
+                    :name  (field 0)
+                    :value (field 1)}]]))])]]]
       [:div.row
        ; TODO: make pagination truncate when there are too many pages
        [:br]
