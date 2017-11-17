@@ -1,4 +1,4 @@
-.PHONY: deps autobuild-client build-client repl server clean help
+.PHONY: deps autobuild-client build-client repl server clean help install-ojdbc setup
 
 MY_ORACLE_HOME=$(HOME)/Oracle/Middleware/Oracle_Home
 MY_JAVA_HOME=$(MY_ORACLE_HOME)/oracle_common_jdk
@@ -9,6 +9,11 @@ CLJ=java -cp 'resources/cljs.jar:$(CP):src'
 
 deps:
 	scripts/lein deps
+
+install-ojdbc:
+	mvn install:install-file -Dfile=resources/ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.1 -Dpackaging=jar
+
+setup: install-ojdbc deps
 
 resources/public/js/main.js:
 	$(CLJ) clojure.main scripts/build-client.clj
@@ -33,8 +38,9 @@ clean:
 
 help:
 	@echo -==================== Hilbert ========================-
-	@echo
+	@echo "setup            - setup developent environment"
 	@echo "deps             - download project dependecies from Maven"
+	@echo "install-ojdbc    - install Oracle JDBC driver"
 	@echo "autobuild-client - start autobuild daemon"
 	@echo "build-client     - build client"
 	@echo "repl             - start server-side REPL"
