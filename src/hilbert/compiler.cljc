@@ -7,7 +7,7 @@
     (:use #?(:clj (hiccup.core))))
 
 (defn compiler-error [msg]
-  (throw #?(:clj (Exceptoion. msg)
+  (throw #?(:clj (Exception. msg)
             :cljs (js/Error. msg))))
 
 (defn control? [x]

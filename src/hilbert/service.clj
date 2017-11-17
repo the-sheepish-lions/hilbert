@@ -42,6 +42,7 @@
    [:body
     [:div {:class "container" :id "main"}
      body]
+    [:script {:type "text/javascript" :src "https://code.jquery.com/jquery-3.2.1.min.js"}]
     [:script {:type "text/javascript" :src "/js/main.js"}]]])
 
 (defroutes service
@@ -51,7 +52,7 @@
 
   ;; template service
   (GET "/template/:form" [form]
-       (transit-data (compile-form (form-file form))))
+       (transit-data (form-file form)))
 
   ;; data service
   ;; TODO: add better error checking

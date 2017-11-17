@@ -1,59 +1,6 @@
 (ns hilbert.controls.table
-  #?(:cljs
-     (:require-macros [cljs.core.async.macros :refer [go]]
-                      [hiccups.core :as hiccups :refer [html]]))
-  (:require
-    #?(:cljs [cljs.core.async :as async :refer [>! <! put! chan alts!]])
-    #?(:cljs [goog.events :as events])
-    #?(:cljs [goog.dom.classes :as classes])
-    #?(:cljs [hiccups.runtime :as hiccupsrt])
-    #?(:cljs [hilbert.data.client :as data])
-    [hilbert.compiler :as compiler :refer [register-control-type control-data]]
-    [hilbert.util :as util :refer [string->int string->keyword]])
-  #?(:cljs (:import [goog.events EventType])))
-
-(defn by-id
-  "Shorthand for document.getElementById(id)"
-  [id]
-  (.getElementById js/document id))
-
-(defn events->chan
-  "Given a target DOM element and event type return a channel of
-  observed events. Can supply the channel to receive events as third
-  optional argument."
-  ([el event-type] (events->chan el event-type (chan)))
-  ([el event-type c]
-   (events/listen el event-type
-     (fn [e] (put! c e)))
-   c))
-
-(defn set-html!
-  "Set inner HTML of element selected by element id"
-  [id s]
-  (set! (.-innerHTML (by-id id)) s))
-
-(defn ->array
-  [x]
-  (.apply (.. js/Array -prototype -slice) x))
-
-(defn value-map
-  [rowid]
-  (let [elem (.querySelector js/document (str "tr[data-id='" rowid "']"))]
-    (into {} (map #(vector (keyword (.-name %)) (.-value %)) (->array (.querySelectorAll elem "input[type=text]"))))))
-
-(defn predicate-map
-  [rowid]
-  (let [elem (.querySelector js/document (str "tr[data-id='" rowid "']"))]
-    (into {} (map #(vector (keyword (.-name %)) (.-value %)) (->array (.querySelectorAll elem "input[type=hidden]"))))))
-
-(defn ADD [elem]
-  )
-
-(defn UPDATE [elem rowid]
-  (data/process-request [:update :fwbagnt (value-map rowid) (predicate-map rowid)]))
-
-(defn DELETE [elem rowid]
-  (data/process-request [:delete :fwbagnt (predicate-map rowid)]))
+  (:require [hilbert.compiler :as compiler :refer [register-control-type control-data]]
+            [hilbert.util :as util :refer [string->int string->keyword]]))
 
 (defn table-control
   "A control for rendering tabular data"
