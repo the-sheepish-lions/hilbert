@@ -67,17 +67,20 @@
 
 (def $ (.-jQuery js/window))
 
+(defn delete-row [rowid]
+  (.fadeOut ($ (str "tr[data-id=" rowid "]"))))
+
 (defn ADD [elem]
   (.prepend ($ "tbody") (row-html)))
 
 (defn INSERT [elem rowid]
   (data/process-request [:insert :fwbagnt [(value-map rowid)]]))
 
-(defn DELETE_NEW [elem rowid]
-  (.fadeOut ($ (str "tr[data-id=" rowid "]"))))
+(defn DELETE_NEW [elem rowid] (delete-row rowid))
 
 (defn UPDATE [elem rowid]
   (data/process-request [:update :fwbagnt (value-map rowid) (predicate-map rowid)]))
 
 (defn DELETE [elem rowid]
-  (data/process-request [:delete :fwbagnt (predicate-map rowid)]))
+  (data/process-request [:delete :fwbagnt (predicate-map rowid)])
+  (delete-row rowid))
