@@ -21,10 +21,15 @@
   (map keyword (map :control.field/name (ctrl :control.table/columns))))
 
 (defn control-data
-  [ctrl params]
-  (if (control-data-from-database-table? ctrl)
-    (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl) params)
-    (compiler-error "Unknown datasource")))
+  [ctrl]
+  (fn [params]
+    (if (control-data-from-database-table? ctrl)
+      (data/projection (keyword (:control.datasource/name ctrl)) (table-control-fields ctrl) params)
+      (compiler-error "Unknown datasource"))))
+
+(defn control-has-data?
+  [ctrl]
+  (:control.datasource/type ctrl))
 
 (def
   ^{:private true
@@ -60,7 +65,9 @@
     [:h1 (:form/title form)])
     [:div {:id "alerts" :style "min-height: 50px"} "&nbsp;"]
     (for [ctrl (:form/controls form)]
-      (compile-control ctrl params))])
+      (if (control-has-data? ctrl)
+        (compile-control ctrl (control-data ctrl) params)
+        (compile-control ctrl params)))])
 
 (defn compile-string [s]
   (compile-form (edn/read-string s) {}))

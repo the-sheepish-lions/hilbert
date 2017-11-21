@@ -4,7 +4,7 @@
 
 (defn table-control
   "A control for rendering tabular data"
-  [ctrl params]; TODO [ctrl data params]
+  [ctrl data-src params]
   (let [cols    (:control.table/columns ctrl)
         labels  (map :control.field/label cols)
         sorter  (:control.table/sort-by ctrl)
@@ -13,7 +13,7 @@
         params* {:page      page
                  :page-size (string->int (get params :page-size psize))
                  :sort-by   (string->keyword (get params :sort-by sorter))}
-        proj    (hilbert.compiler/control-data ctrl params*) ; TODO: data
+        proj    (data-src params*)
         pcount  (int (Math/ceil (/ (proj :count) psize)))]
     (prn :params params params*)
     [:div.table-control
