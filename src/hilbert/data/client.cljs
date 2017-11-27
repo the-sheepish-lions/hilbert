@@ -24,18 +24,17 @@
        (join "&")
        (str "?")))
 
-(defn debug-handler
-  [[ok response]]
-  (if ok
-    (prn response)
-    (.error js/console (prn-str response)))
-  [ok response])
+(defn handler [f]
+  (fn [[ok response]]
+    (if (or (not ok) (= :error (response :status)))
+      (go (>! alerts-chan [:error (str (response :message))]))
+      (f))))
 
-(defn projection-handler
-  [[ok response]]
-  (if ok
-    (go (>! projection-chan response))
-    (go (>! alerts-chan [:error (str response)]))))
+(def debug-handler (handler #(prn %)))
+(def projection-handler (handler #(go (>! projections-chan %))))
+(def insert-handler (handler #(go (>! alerts-chan [:success "Record successfully added"]))))
+(def update-handler (handler #(go (>! alerts-chan [:success "Record successfully updated"]))))
+(def delete-handler (handler #(go (>! alerts-chan [:success "Record successfully deleted"]))))
 
 ; CRUD
 ; TODO: these should all accept a function argument
@@ -63,7 +62,7 @@
       {:method :post
        :uri uri
        :params {:values values}
-       :handler debug-handler
+       :handler insert-handler
        :format (transit-request-format)
        :response-format (transit-response-format {:keyword? true})})))
 
@@ -75,7 +74,7 @@
       {:method :put
        :uri uri
        :params {:set values :where preds}
-       :handler debug-handler
+       :handler update-handler
        :format (transit-request-format)
        :response-format (transit-response-format {:keyword? true})})))
 
@@ -87,7 +86,7 @@
       {:method :delete
        :uri uri
        :params {:where preds}
-       :handler debug-handler
+       :handler delete-handler
        :format (transit-request-format)
        :response-format (transit-response-format {:keyword? true})})))
 
@@ -110,16 +109,23 @@
 
 (defn $ [elem] (.jQuery js/window elem))
 
-(defn display-alert!
-  [msg]
-  (.append
-    ($ "#alerts")
-    (str "<div class=\"alert alert-primary\" role=\"alert\">"
-            msg
-            "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
-              "<span aria-hidden=\"true\">&times;</span>"
-            "</button>"
-         "</div>")))
+(defn alert [kind msg]
+  (str "<div class=\"alert alert-" kind "\" role=\"alert\">"
+          msg
+          "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
+            "<span aria-hidden=\"true\">&times;</span>"
+          "</button>"
+       "</div>"))
+
+(defmulti display-alert! (fn [[tag txt]] tag) :default :info)
+(defmethod display-alert! :info [msg]
+  (.append ($ "#alerts") (alert "info" (msg 1))))
+(defmethod display-alert! :success [msg]
+  (.append ($ "#alerts") (alert "success" (msg 1))))
+(defmethod display-alert! :error [msg]
+  (.append ($ "#alerts") (alert "danger" (msg 1))))
+(defmethod display-alert! :warning [msg]
+  (.append ($ "#alerts") (alert "warning" (msg 1))))
 
 ; process service requests
 (go

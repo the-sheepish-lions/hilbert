@@ -26,6 +26,12 @@
         r  (transit/reader in :json)]
     (transit/read r)))
 
+(defn error [msg]
+  (transit-data {:status :error :message msg}))
+
+(defn success [data]
+  (transit-data {:status :success :data data}))
+
 (defn nil-or-empty?
   [x]
   (or (nil? x) (empty? x)))
@@ -43,8 +49,8 @@
     [:div {:class "container" :id "main"}
      body]
     [:script {:type "text/javascript"
-              :src "https://code.jquery.com/jquery-3.2.1.slim.min.js"
-              :integrity "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+              :src "https://code.jquery.com/jquery-3.2.1.min.js"
+              :integrity "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
               :crossorigin "anonymous"}]
     [:script {:type "text/javascript"
               :src "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
@@ -78,16 +84,22 @@
   ; insert
   (POST "/data/:source" [source :as req]
         (let [body (read-transit (slurp (req :body)))
-              data (body :values)
-              res  (insert (keyword source) data)]
-          (transit-data {:insert source :values data})))
+              data (body :values)]
+          (try
+            (insert (keyword source) data)
+            (success {:insert source :values data})
+            (catch Exception e
+              (error (.getMessage e))))))
   ; update
   (PUT "/data/:source" [source :as req]
         (let [body  (read-transit (slurp (req :body)))
               data  (body :set)
-              preds (body :where)
-              res   (update (keyword source) data preds)]
-          (transit-data {:update source :set data :where preds})))
+              preds (body :where)]
+          (try
+            (update (keyword source) data preds)
+            (success {:update source :set data :where preds})
+            (catch Exception e
+              (error (.getMessage e))))))
   ; delete
   (DELETE "/data/:source" [source :as req]
         (let [body  (read-transit (slurp (req :body)))

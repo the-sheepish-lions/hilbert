@@ -33,15 +33,24 @@
   [x]
   (.apply (.. js/Array -prototype -slice) x))
 
+(defn empty-or-nil? [x]
+  (or (nil? x) (= 0 (.-length x))))
+
 (defn value-map
   [rowid]
   (let [elem (.querySelector js/document (str "tr[data-id='" rowid "']"))]
-    (into {} (map #(vector (keyword (.-name %)) (.-value %)) (->array (.querySelectorAll elem "input[type=text]"))))))
+    (->> (->array (.querySelectorAll elem "input[type=text]"))
+         (map #(vector (keyword (.-name %)) (.-value %)))
+         (remove #(empty-or-nil? (% 1)))
+         (into {}))))
 
 (defn predicate-map
   [rowid]
   (let [elem (.querySelector js/document (str "tr[data-id='" rowid "']"))]
-    (into {} (map #(vector (keyword (.-name %)) (.-value %)) (->array (.querySelectorAll elem "input[type=hidden]"))))))
+    (->> (->array (.querySelectorAll elem "input[type=hidden]"))
+         (map #(vector (keyword (.-name %)) (.-value %)))
+         (remove #(empty-or-nil? (% 1)))
+         (into {}))))
 
 (defn row-template []
   (let [elem  (.querySelector js/document (str "tr[data-id='0']"))
