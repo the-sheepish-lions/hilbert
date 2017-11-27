@@ -65,13 +65,11 @@
             (join "</td><td>"))
        "</tr>"))
 
-(def $ (.-jQuery js/window))
-
 (defn delete-row [rowid]
-  (.fadeOut ($ (str "tr[data-id=" rowid "]"))))
+  (.fadeOut (.jQuery js/window (str "tr[data-id=" rowid "]"))))
 
 (defn ADD [elem]
-  (.prepend ($ "tbody") (row-html)))
+  (.prepend (.jQuery js/window "tbody") (row-html)))
 
 (defn INSERT [elem rowid]
   (data/process-request [:insert :fwbagnt [(value-map rowid)]]))

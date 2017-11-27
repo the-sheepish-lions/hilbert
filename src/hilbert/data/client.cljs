@@ -11,11 +11,11 @@
 
 (def
   ^{:doc "Channel for receiving projections from the back-end"}
-  projection-chan (chan))
+  alerts-chan (chan))
 
 (def
   ^{:doc "Channel for receiving projections from the back-end"}
-  alerts-chan (chan))
+  projections-chan (chan))
 
 (defn query-string
   [params]
@@ -38,6 +38,7 @@
     (go (>! alerts-chan [:error (str response)]))))
 
 ; CRUD
+; TODO: these should all accept a function argument
 (defn process-projection-request
   [[tag table fields params]]
   (prn fields)
@@ -90,6 +91,7 @@
        :format (transit-request-format)
        :response-format (transit-response-format {:keyword? true})})))
 
+; TODO: refactor, use mutiple dispatch
 (defn process-request
   "Facilitates data service request dispatch. Requests are vectors of the form:
     
@@ -106,17 +108,25 @@
     :else
       (throw (js/Error. (str "Invalid request: " (pr-str req))))))
 
+(defn $ [elem] (.jQuery js/window elem))
+
+(defn display-alert!
+  [msg]
+  (.append
+    ($ "#alerts")
+    (str "<div class=\"alert alert-primary\" role=\"alert\">"
+            msg
+            "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
+              "<span aria-hidden=\"true\">&times;</span>"
+            "</button>"
+         "</div>")))
+
 ; process service requests
 (go
   (while true
-    (let [[v ch] (alts! [projection-chan alerts-chan service-chan])]
+    (let [[v ch] (alts! [alerts-chan service-chan])]
       (prn :channel ch)
       (prn :value v)
       (condp = ch
         service-chan (process-request v)
-        alerts-chan (.error js/console v)
-        projection-chan (.log js/console v)))))
-
-(defn project!
-  [table fields params]
-  (go (>! service-chan [:project table fields params])))
+        alerts-chan (display-alert! v)))))
