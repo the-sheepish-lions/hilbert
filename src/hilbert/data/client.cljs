@@ -109,13 +109,12 @@
 ; process service requests
 (go
   (while true
-    (let [[v ch] (alts! [projection-chan alerts-chan service-chan])]
+    (let [[v ch] (alts! [alerts-chan service-chan])]
       (prn :channel ch)
       (prn :value v)
       (condp = ch
         service-chan (process-request v)
-        alerts-chan (.error js/console v)
-        projection-chan (.log js/console v)))))
+        alerts-chan (.error js/console v)))))
 
 (defn project!
   [table fields params]

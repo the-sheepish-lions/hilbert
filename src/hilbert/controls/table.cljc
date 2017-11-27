@@ -25,7 +25,7 @@
      [:div.row
       [:table.table.table-hover
        [:thead
-        [:th "#"]
+        [:th "&nbsp;"]
         (map #(vector :th %) labels)]
        [:tbody
         (for [r (map-indexed #(vector %1 %2) (proj :data))]
