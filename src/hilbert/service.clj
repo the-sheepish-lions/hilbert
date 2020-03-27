@@ -11,6 +11,7 @@
             [compojure.route :as route]))
 
 (load "controls/table")
+(load "controls/label")
 
 (defn form-file [form]
   (edn/read-string (slurp (str "forms/" form "_fmb.edn"))))

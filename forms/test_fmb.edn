@@ -1,0 +1,9 @@
+; TODO: How do we add validation rules, data type information?
+; TODO: add more meaningful help messages
+{:form/name :test
+ :form/title "Test"
+ :form/controls
+  [{:control/type :control.type/label
+    :control/name "hello"
+    :control.label/text "Hello"}]
+}
